@@ -15,3 +15,8 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
+    - name: Install Arduino CLI
+      uses: arduino/setup-arduino-cli@v1.0.0
+    -name: Compile sketch
+      run: arduino-cli compile Loop-controller/Software/tunnerController.ino -fqbn arduino:avr:uno

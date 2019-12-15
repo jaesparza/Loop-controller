@@ -8,12 +8,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a multi-line script
+    - name: Show worskpace location
       run: |
+        ls
         echo Checked out @
         pwd
     - name: Install Arduino-CLI
       uses: arduino/setup-arduino-cli@v1.0.0
+    - name: Updating index and getting third-party boards 
+      run: |
+        arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
+        arduino-cli core install Sparkfun:avr
     - name: Arduino-CLI update index and install core avr
       run: |
         arduino-cli core update-index

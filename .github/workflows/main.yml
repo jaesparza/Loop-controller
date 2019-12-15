@@ -21,6 +21,6 @@ jobs:
     - name: Arduino-CLI update index and install board
       run: |
         arduino-cli core update-index
-        arduino-cli core install arduino:avr:uno
+        arduino-cli core install arduino:avr
     - name: Compile sketch
       run: arduino-cli compile Loop-controller/Software/tunnerController.ino --fqbn arduino:avr:uno

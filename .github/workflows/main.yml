@@ -25,10 +25,13 @@ jobs:
       run: |
         arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
         arduino-cli core search --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
-        arduino-cli core install SparkFun:avr
+        ## arduino-cli core install SparkFun:avr # Cannot resolve target
 
     - name: Install arduino libraries
       run: |
         arduino-cli lib install LiquidCrystal
     - name: Compile sketch
-      run: arduino-cli compile ./Software/tunnerController/tunnerController.ino --fqbn arduino:avr:uno
+      run: |
+        arduino-cli compile ./Software/tunnerController/tunnerController.ino --fqbn arduino:avr:uno
+        arduino-cli compile ./Software/tunnerController/tunnerController.ino -v --fqbn SparkFun:avr:promicro
+

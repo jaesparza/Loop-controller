@@ -15,14 +15,18 @@ jobs:
         pwd
     - name: Install Arduino-CLI
       uses: arduino/setup-arduino-cli@v1.0.0
-    - name: Updating index and getting third-party boards 
-      run: |
-        arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
-        arduino-cli core install SparkFun:avr
+    
     - name: Arduino-CLI update index and install core avr
       run: |
         arduino-cli core update-index
         arduino-cli core install arduino:avr
+    
+    - name: Updating index and getting third-party boards 
+      run: |
+        arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
+        arduino-cli core search --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
+        arduino-cli core install SparkFun:avr
+
     - name: Install arduino libraries
       run: |
         arduino-cli lib install LiquidCrystal

@@ -24,5 +24,8 @@ jobs:
       run: |
         arduino-cli core update-index
         arduino-cli core install arduino:avr
+    - name: Install arduino libraries
+      run: |
+        arduino-cli lib install LiquidCrystal
     - name: Compile sketch
       run: arduino-cli compile ./Software/tunnerController/tunnerController.ino --fqbn arduino:avr:uno

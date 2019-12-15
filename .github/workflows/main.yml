@@ -4,23 +4,17 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
     - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        echo Checked out @
         pwd
-        ls
-
     - name: Install Arduino-CLI
       uses: arduino/setup-arduino-cli@v1.0.0
-    - name: Arduino-CLI update index and install board
+    - name: Arduino-CLI update index and install core avr
       run: |
         arduino-cli core update-index
         arduino-cli core install arduino:avr

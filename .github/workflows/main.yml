@@ -24,5 +24,5 @@ jobs:
       run: |
         arduino-cli core update-index
         arduino-cli core install arduino:avr
-    #- name: Compile sketch
-    #  run: arduino-cli compile tunnerController.ino --fqbn arduino:avr:uno
+    - name: Compile sketch
+      run: arduino-cli compile ./Software/tunnerController/tunnerController.ino --fqbn arduino:avr:uno

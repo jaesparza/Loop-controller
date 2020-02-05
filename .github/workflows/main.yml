@@ -25,7 +25,6 @@ jobs:
       run: |
         arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
         arduino-cli core search --additional-urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/master/IDE_Board_Manager/package_sparkfun_index.json
-        ## arduino-cli core install SparkFun:avr # Cannot resolve target
 
     - name: Install arduino libraries
       run: |

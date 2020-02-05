@@ -32,5 +32,3 @@ jobs:
     - name: Compile sketch
       run: |
         arduino-cli compile ./Software/tunnerController/tunnerController.ino --fqbn arduino:avr:uno
-        arduino-cli compile ./Software/tunnerController/tunnerController.ino -v --fqbn SparkFun:avr:promicro
-

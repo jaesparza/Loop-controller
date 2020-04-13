@@ -3,8 +3,14 @@
 #ifndef UI_H_
 #define UI_H_
 
+#include <Arduino.h>
+#include <LiquidCrystal.h>
+#include "HardwareConfig.h"
+
+
 #define INIT_MESSAGE    "   Loop tunner"
 #define CONFIG_MESSAGE  "CFG mode - LOW"
+
 
 
 #define SOLID_BLOCK      0
@@ -15,7 +21,7 @@
 #define EMPTY_RIGHT      5
 #define EMPTY_CHARACTER  6
 
-byte solidBlock[8] = {
+static byte solidBlock[8] = {
     B11111,
     B11111,
     B11111,
@@ -25,7 +31,7 @@ byte solidBlock[8] = {
     B11111,
 };
 
-byte rightDelimiter[8] = {
+static byte rightDelimiter[8] = {
     B11111,
     B1,
     B11101,
@@ -36,7 +42,7 @@ byte rightDelimiter[8] = {
     B11111
 };
 
-byte leftDelimiter[8] = {
+static byte leftDelimiter[8] = {
     B11111,
     B10000,
     B10111,
@@ -47,7 +53,7 @@ byte leftDelimiter[8] = {
     B11111
 };
 
-byte positionBar[8] = {
+static byte positionBar[8] = {
     B11111,
     B00000,
     B11111,
@@ -58,7 +64,7 @@ byte positionBar[8] = {
     B11111
 };
 
-byte emptyCharacter[8] = {
+static byte emptyCharacter[8] = {
     B11111,
     B00000,
     B00000,
@@ -69,7 +75,7 @@ byte emptyCharacter[8] = {
     B11111
 };
 
-byte emptyRight[8] = {
+static byte emptyRight[8] = {
     B11111,
     B1,
     B1,
@@ -80,7 +86,7 @@ byte emptyRight[8] = {
     B11111
 };
 
-byte emptyLeft[8] = {
+static byte emptyLeft[8] = {
     B11111,
     B10000,
     B10100,
@@ -90,6 +96,8 @@ byte emptyLeft[8] = {
     B10000,
     B11111
 };
+
+
 
 void updateScreen(int position);
 void initLCD();

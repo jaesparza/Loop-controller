@@ -243,6 +243,7 @@ void normalOperation() {
   }
 }
 
+
 void clearLCDLine(int line)
 {               
         lcd.setCursor(0,line);

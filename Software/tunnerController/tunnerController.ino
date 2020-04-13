@@ -65,7 +65,7 @@ void sendPulse(int orientation) {
 
     int duration = 0;
     if (speedIn == SLOW) {
-       duration = 10;
+       duration = DELAY_SLOW;
        if (orientation ==ROTATE_CW){
           rotationCount = rotationCount + 1;
        }
@@ -75,12 +75,12 @@ void sendPulse(int orientation) {
     }
     else
     {
-       duration = 1;
+       duration = DELAY_FAST;
        if (orientation ==ROTATE_CW){
-          rotationCount = rotationCount + 10;
+          rotationCount = rotationCount + 1;
        }
        else {
-         rotationCount = rotationCount - 10;
+         rotationCount = rotationCount - 1;
        }
     }
     digitalWrite(STEP_PIN,HIGH);

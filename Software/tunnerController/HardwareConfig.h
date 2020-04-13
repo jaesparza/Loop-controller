@@ -31,6 +31,8 @@
 #define ENABLE_PIN 8
 #define DIRECTION_PIN A1
 
-#define MAX_COUNT 30000
+#define MAX_COUNT 15810
+#define COLUMN 16
+#define COUNT_PER_COL (MAX_COUNT/COLUMN)
 
 #endif /* HARDWARECONFIG_H_ */

@@ -8,10 +8,10 @@
 #include "HardwareConfig.h"
 
 
-#define INIT_MESSAGE    "   Loop tunner"
-#define CONFIG_MESSAGE  "CFG mode - LOW"
-
-
+#define INIT_MESSAGE     "   Loop tunner"
+#define CONFIG_MESSAGE   "CFG mode - LOW"
+#define LINE_1_COUNT     "Position: "
+#define LINE_1_COUNT_LEN 10
 
 #define SOLID_BLOCK      0
 #define LEFT_DELIMITER   1
@@ -31,14 +31,45 @@ static byte solidBlock[8] = {
     B11111,
 };
 
+static byte rightDelimiterThin[8] = { 
+    B11111,
+    B00001,
+    B11101,
+    B11101,
+    B11101,
+    B00001,
+    B11111
+};
+
+static byte leftDelimiterThin[8] = {
+    B11111,
+    B10000,
+    B10111,
+    B10111,
+    B10111,
+    B10000,
+    B11111
+};
+
+
+static byte positionBarThin[8] = {
+    B11111,
+    B00000,
+    B11111,
+    B11111,
+    B11111,
+    B00000,
+    B11111  
+};
+
 static byte rightDelimiter[8] = {
     B11111,
-    B1,
+    B00001,
     B11101,
     B11101,
     B11101,
     B11101,
-    B1,
+    B00001,
     B11111
 };
 
@@ -64,6 +95,16 @@ static byte positionBar[8] = {
     B11111
 };
 
+static byte emptyCharacterThin[8] = {
+    B11111,
+    B00000,
+    B00000,
+    B00000,
+    B00000,
+    B00000,
+    B11111
+};
+
 static byte emptyCharacter[8] = {
     B11111,
     B00000,
@@ -72,6 +113,26 @@ static byte emptyCharacter[8] = {
     B00000,
     B00000,
     B00000,
+    B11111
+};
+
+static byte emptyRightThin[8] = {
+    B11111,
+    B00001,
+    B00001,
+    B00001,
+    B00001,
+    B00001,
+    B11111
+};
+
+static byte emptyLeftThin[8] = {
+    B11111,
+    B10000,
+    B10100,
+    B10100,
+    B10100,
+    B10100,
     B11111
 };
 
@@ -104,5 +165,9 @@ void initLCD();
 void makeFullBar();
 void makeEmptyBar(int start, int last);
 void clearLCDLine(int line);
+void updateCount(int rotationCount);
+void showText();
+void writeNumber(char n);
+void removeNullTermination(char * buffer,int len);
 
 #endif /* UI_H_ */

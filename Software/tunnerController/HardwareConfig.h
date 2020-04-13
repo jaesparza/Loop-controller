@@ -26,7 +26,7 @@
 #define ROTATE_CW 1
 #define ROTATE_CCW 2
 
-#define CONF_1
+#define CONF_2
 
 #ifdef CONF_1
 // Works well with a 400 steps/rev stepper motor

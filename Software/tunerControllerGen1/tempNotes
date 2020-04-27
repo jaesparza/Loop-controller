@@ -1,0 +1,51 @@
+/*
+void sendPulse(int orientation) {
+
+    int duration = 0;
+    if (userInput->getSpeed() == SLOW) {
+      stepper->setSlow();
+       if (orientation == ROTATE_CW){
+          stepper->rotateCW();
+          rotationCount++;
+       }
+       else {
+         rotationCount--;
+       }
+    }
+    else
+    {
+       stepper->setFast();
+       if (orientation == ROTATE_CCW){
+          stepper->rotateCCW;
+          rotationCount++;
+       }
+       else {
+         rotationCount--;
+       }
+    }
+
+    digitalWrite(STEP_PIN,HIGH);
+    delayMicroseconds(duration);
+    digitalWrite(STEP_PIN,LOW);
+    delayMicroseconds(duration);
+}
+
+*/
+
+
+/*
+boolean waitForRelease(){
+  extraPB = digitalRead(BUTTON_1_IN);
+  while(extraPB == LOW) {
+      extraPB = digitalRead(BUTTON_1_IN);
+  }
+  return true;
+}*/
+
+
+void initSerial(){
+  Serial.begin(9600);
+  Serial.println("Motor driver initialized");
+}
+
+  initSerial();

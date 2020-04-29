@@ -36,13 +36,15 @@ boolean bootMode = BOOT_NORMAL_MODE;
 boolean calibrationComplete = false;
 // Strategy      * operationStrategy;
 
+Input *Input::instance = 0;
+
 Input *userInput;
 UI *display;
 StepperMotor *stepper;
 
 void setup() {
 
-    userInput = new Input();
+    userInput = Input::getInstance();
     display = new UI();
     stepper = new StepperMotor();
 

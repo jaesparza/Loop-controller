@@ -18,12 +18,16 @@ class Input {
     void initInput();
     boolean isRotateCCW();
     boolean isRotateCW();
+    static Input *getInstance();
 
   private:
     int speedIn = 0;
     int cwIn = 0;
     int ccwIn = 0;
     int extraPB = 0;
+
+    static Input *instance;
+    Input();
 };
 
 #endif // INPUT_H

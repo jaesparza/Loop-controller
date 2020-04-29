@@ -53,3 +53,12 @@ boolean Input::isRotateCW() {
         return false;
     }
 }
+
+Input *Input::getInstance() {
+    if (!instance) {
+        instance = new Input();
+    }
+    return instance;
+}
+
+Input::Input() {}

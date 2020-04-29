@@ -2,7 +2,6 @@
 #define STEPPER_MOTOR_H
 
 #include "HardwareConfig.h"
-#include <Arduino.h>
 
 #define MOTOR_ENABLE  0
 #define MOTOR_DISABLE 1

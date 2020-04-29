@@ -1,4 +1,6 @@
 #include "Input.h"
+#include "HardwareConfig.h"
+#include <Arduino.h>
 
 void Input::initInput() {
     pinMode(CW_IN, INPUT);
@@ -38,7 +40,7 @@ int Input::getExtraPB() {
     return extraPB;
 }
 
-boolean Input::isRotateCCW() {
+uint8_t Input::isRotateCCW() {
     if ((cwIn == RELEASED) && (ccwIn == PUSHED)) {
         return true;
     } else {
@@ -46,7 +48,7 @@ boolean Input::isRotateCCW() {
     }
 }
 
-boolean Input::isRotateCW() {
+uint8_t Input::isRotateCW() {
     if ((cwIn == PUSHED) && (ccwIn == RELEASED)) {
         return true;
     } else {

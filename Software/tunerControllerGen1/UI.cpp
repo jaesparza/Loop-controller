@@ -1,4 +1,7 @@
 #include "UI.h"
+#include "HardwareConfig.h"
+#include "characterDefinitions.h"
+#include <Arduino.h>
 
 #if defined(USE_FAST_LIB)
 LiquidCrystalFast lcd(RS, ENABLE, D4, D5, D6, D7);

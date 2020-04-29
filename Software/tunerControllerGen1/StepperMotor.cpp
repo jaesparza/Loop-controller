@@ -1,4 +1,5 @@
 #include "StepperMotor.h"
+#include <Arduino.h>
 
 void StepperMotor::initMotorState() {
     digitalWrite(DIRECTION_PIN, HIGH);

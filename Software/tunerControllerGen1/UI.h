@@ -1,11 +1,8 @@
 /*
  * Filename: UI.h
- * Description:
+ * Description: Class to handle a 16X2 LCD screen to display position
+ * information to the user.
  *
- *
- * Custom character creator: https://www.quinapalus.com/hd44780udg.html
- *
- * Project:
  * Author: jaesparza - jaesparza@gmail.com
  */
 
@@ -20,10 +17,6 @@ boolean waitForRelease(){
 
 #ifndef UI_H
 #define UI_H
-
-#include "HardwareConfig.h"
-#include "characterDefinitions.h"
-#include <Arduino.h>
 
 #define USE_FAST_LIB
 #if defined(USE_FAST_LIB)

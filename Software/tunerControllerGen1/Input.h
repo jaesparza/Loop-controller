@@ -1,8 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "HardwareConfig.h"
-#include <Arduino.h>
+#include <stdint.h>
 
 // The push-buttons have external pull-ups, therefore signals are:
 #define PUSHED   0
@@ -16,8 +15,8 @@ class Input {
     int getExtraPB();
     void readInputs();
     void initInput();
-    boolean isRotateCCW();
-    boolean isRotateCW();
+    uint8_t isRotateCCW();
+    uint8_t isRotateCW();
     static Input *getInstance();
 
   private:

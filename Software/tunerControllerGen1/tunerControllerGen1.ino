@@ -1,6 +1,7 @@
 /*
  * Filename:     tunerControlGen1.ino
  * Description:  main file for the tunner control unit.
+ * Author: jaesparza - jaesparza@gmail.com
  *
  * Compiled with arduino IDE version 1.8.10, edited with VScode and formatted
  * with with clang-format.
@@ -12,8 +13,6 @@
  * antenna. If not properly constructed, lethal voltages could be derived to
  * your control board. Us it at your OWN risk.
  *
- * Author: jaesparza - jaesparza@gmail.com
- *
  * Pending improvements:
  *  - updateCount takes as parameter int however, the maximum number of counts
  *    is stored in a long, this has to be fixed
@@ -21,12 +20,12 @@
  *  - modify the code such that it stores position in eeprom
  */
 
-#include "HardwareConfig.h"
-
+// Include hardware control classes
 #include "Input.h"
 #include "StepperMotor.h"
 #include "UI.h"
 
+// Include operational logic classes
 #include "Mode.h"
 #include "ModeCalibrate.h"
 #include "ModeOperate.h"
@@ -44,8 +43,8 @@ StepperMotor *stepper = 0;
 // Global operational mode declaration
 Mode *currentMode = 0;
 
+// Setup code, run once
 void setup() {
-
     userInput = Input::getInstance();
     display = UI::getInstance();
     stepper = StepperMotor::getInstance();
@@ -69,6 +68,7 @@ void setup() {
     }
 }
 
+// Continuous execution of the selected mode
 void loop() {
     currentMode->execute();
 }

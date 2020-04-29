@@ -51,3 +51,12 @@ void StepperMotor::sendPulse() {
     digitalWrite(STEP_PIN, LOW);
     delayMicroseconds(activeDuration);
 }
+
+StepperMotor *StepperMotor() {
+    if (!instance) {
+        instance = new StepperMotor();
+    }
+    return instance;
+}
+
+StepperMotor::StepperMotor() {}

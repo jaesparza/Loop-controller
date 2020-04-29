@@ -54,10 +54,14 @@ class UI {
     void udpateDisplay();
     void updateRefreshCount();
     void update(int);
+    static UI *getInstance();
 
   private:
     long int lastRefresh = 0;
     long int refreshCount = 0;
+
+    static UI *instance;
+    UI();
 };
 
 #endif /* UI_H_ */

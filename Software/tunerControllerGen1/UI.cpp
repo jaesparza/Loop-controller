@@ -158,3 +158,12 @@ void UI::progressBarTest() {
         delay(50);
     }
 }
+
+UI *UI::getInstance() {
+    if (!instance) {
+        instance = new UI();
+    }
+    return instance;
+}
+
+UI::UI() {}

@@ -28,15 +28,19 @@ class StepperMotor {
 
     long int getRotationCount();
 
+    static StepperMotor *getInstance();
+
   private:
     volatile long int rotationCount = 0;
     int orientation = 0;
     int speed = 0;
 
     int activeDuration = DELAY_SLOW;
-
     int const durationSlow = DELAY_SLOW;
     int const durationFast = DELAY_FAST;
+
+    static StepperMotor *instance;
+    StepperMotor();
 };
 
 #endif // STEPPER_MOTOR_H

@@ -36,17 +36,16 @@ boolean bootMode = BOOT_NORMAL_MODE;
 boolean calibrationComplete = false;
 // Strategy      * operationStrategy;
 
-Input *Input::instance = 0;
-
-Input *userInput;
-UI *display;
-StepperMotor *stepper;
+// Initialize the pointers before getting the instances
+Input *userInput = 0;
+UI *display = 0;
+StepperMotor *stepper = 0;
 
 void setup() {
 
     userInput = Input::getInstance();
-    display = new UI();
-    stepper = new StepperMotor();
+    display = Input::getInstance();
+    stepper = Input::StepperMotor();
 
     // Initialize hardware
     display->initLCD();

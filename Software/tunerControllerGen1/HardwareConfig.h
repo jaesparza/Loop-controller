@@ -49,10 +49,11 @@
 #define ROWS          2
 #define COUNT_PER_COL (MAX_COUNT / COLUMNS)
 
+//#define REFRESH_INTERVAL 500 //@TODO: document this --  Worked fine
+
 #define CONF_1
 
 #ifdef CONF_1
-
 /* Configuration for a stepper motor of 400 pulses per revolution, no planetary
  * reduction built-in.
  *
@@ -66,10 +67,12 @@
  *           2 - LOW
  *           3 - LOW
  */
-#define DELAY_SLOW      1000
-#define DELAY_FAST      600
-#define MAX_COUNT       800
-#define OPERATION_DELAY 10
+#define REFRESH_INTERVAL     50
+#define DELAY_SLOW           300
+#define DELAY_FAST           100
+#define MAX_COUNT            1600
+#define OPERATION_DELAY_SLOW 50
+#define OPERATION_DELAY_FAST 10
 #endif // CONF_1
 
 #ifdef CONF_2
@@ -91,6 +94,7 @@
 #endif // CONF_2
 
 /* If new configuration is created, document it.
+ * Replace the #error macros with the relevant figures.
  * Configuration for a stepper motor ...
  *
  *  This motor is intented to be used with ...
@@ -101,10 +105,12 @@
  *           3 - LOW/HIGH
  */
 #ifdef CONF_3
-#define DELAY_SLOW      XXX
-#define DELAY_FAST      XXX
-#define MAX_COUNT       XXX
-#define OPERATION_DELAY XXX
+#define REFRESH_INTERVAL     #error
+#define DELAY_SLOW           #error
+#define DELAY_FAST           #error
+#define MAX_COUNT            #error
+#define OPERATION_DELAY_SLOW #error
+#define OPERATION_DELAY_FAST #error
 #endif
 
 #endif /* HARDWARECONFIG_H_ */

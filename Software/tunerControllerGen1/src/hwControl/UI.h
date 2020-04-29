@@ -52,6 +52,7 @@ class UI {
     void update(int);
     static UI *getInstance();
     void showText(String);
+    void updateImmediate();
 
   private:
     long int lastRefresh = 0;

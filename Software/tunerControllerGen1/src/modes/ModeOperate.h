@@ -19,9 +19,15 @@ class ModeOperate : public Mode {
             display->updateRefreshCount();
         } else {
             stepper->disableMotor();
+            display->updateImmediate();
+            //@ TODO here we could also update the count
         }
 
-        delay(OPERATION_DELAY);
+        if (userInput->getSpeed() == SLOW) {
+            delay(OPERATION_DELAY_SLOW);
+        } else {
+            delay(OPERATION_DELAY_FAST);
+        }
     }
 
   public:

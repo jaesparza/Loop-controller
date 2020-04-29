@@ -1,5 +1,5 @@
 /*
- * Filename:     tunnerControlGen1.ino
+ * Filename:     tunerControlGen1.ino
  * Description:  main file for the tunner control unit.
  *
  * Compiled with arduino IDE version 1.8.10, edited with VScode and formatted
@@ -57,7 +57,7 @@ void setup() {
 
     // Initialize UI
     display->makeEmptyBar();
-    display->showText();
+    display->showText(LINE_1_COUNT);
 
     // Check inputs and enter configuration configuration mode if requested
     userInput->readInputs();

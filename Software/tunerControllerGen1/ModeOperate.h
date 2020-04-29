@@ -26,7 +26,7 @@ class ModeOperate : public Mode {
 
   public:
     virtual void execute() {
-        // display->showMode(MODE_OPERATION_MESSAGE);
+        // display->showText(MODE_OPERATION_MESSAGE);
         userInput->readInputs();
         display->update(stepper->getRotationCount());
         operateMotor();

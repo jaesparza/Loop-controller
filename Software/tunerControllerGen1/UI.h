@@ -50,7 +50,6 @@ class UI {
     void makeEmptyBar(int start, int last);
     void clearLCDLine(int line);
     void updateCount(int rotationCount);
-    void showText();
     void writeNumber(char n);
     void removeNullTermination(char *buffer, int len);
     void progressBarTest();
@@ -59,7 +58,7 @@ class UI {
     void updateRefreshCount();
     void update(int);
     static UI *getInstance();
-    void showMode(String);
+    void showText(String);
 
   private:
     long int lastRefresh = 0;

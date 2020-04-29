@@ -81,19 +81,13 @@ void UI::updateBar(int position) {
     }
 }
 
-//@TODO: to be refactored
-void UI::showText() {
-    lcd.setCursor(0, 1);
-    lcd.print(LINE_1_COUNT);
-}
-
-void UI::showMode(String mode) {
+void UI::showText(String mode) {
     lcd.setCursor(0, 1);
     lcd.print(mode);
 }
 
 void UI::updateCount(int rotationCount) {
-    showText();
+    showText(LINE_1_COUNT);
     lcd.setCursor(LINE_1_COUNT_LEN, 1);
 
     // Convert rotationCount to char array

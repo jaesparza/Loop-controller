@@ -8,6 +8,10 @@
 #include "HardwareConfig.h"
 
 
+/* Custom character creator:
+*  https://www.quinapalus.com/hd44780udg.html
+*/
+
 #define INIT_MESSAGE     "   Loop tunner"
 #define CONFIG_MESSAGE   "CFG mode - LOW"
 #define LINE_1_COUNT     "Position: "

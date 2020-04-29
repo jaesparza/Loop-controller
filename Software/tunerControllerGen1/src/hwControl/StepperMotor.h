@@ -1,7 +1,7 @@
 #ifndef STEPPER_MOTOR_H
 #define STEPPER_MOTOR_H
 
-#include "HardwareConfig.h"
+#include "../../HardwareConfig.h"
 
 #define MOTOR_ENABLE  0
 #define MOTOR_DISABLE 1

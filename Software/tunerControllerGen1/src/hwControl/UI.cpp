@@ -1,5 +1,5 @@
 #include "UI.h"
-#include "HardwareConfig.h"
+#include "../../HardwareConfig.h"
 #include "characterDefinitions.h"
 #include <Arduino.h>
 

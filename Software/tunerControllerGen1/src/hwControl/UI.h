@@ -6,7 +6,7 @@
  * Author: jaesparza - jaesparza@gmail.com
  */
 
-/* PENDING
+/* @TODO
 boolean waitForRelease(){
   extraPB = digitalRead(BUTTON_1_IN);
   while(extraPB == LOW) {
@@ -20,7 +20,7 @@ boolean waitForRelease(){
 
 #define USE_FAST_LIB
 #if defined(USE_FAST_LIB)
-#include "./src/lib/LiquidCrystalFast.h"
+#include "../lib/LiquidCrystalFast.h"
 #else
 #include <LiquidCrystal.h>
 #endif

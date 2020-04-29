@@ -1,5 +1,5 @@
 #include "Input.h"
-#include "HardwareConfig.h"
+#include "../../HardwareConfig.h"
 #include <Arduino.h>
 
 void Input::initInput() {

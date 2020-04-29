@@ -21,14 +21,14 @@
  */
 
 // Include hardware control classes
-#include "Input.h"
-#include "StepperMotor.h"
-#include "UI.h"
+#include "./src/hwControl/Input.h"
+#include "./src/hwControl/StepperMotor.h"
+#include "./src/hwControl/UI.h"
 
 // Include operational logic classes
-#include "Mode.h"
-#include "ModeCalibrate.h"
-#include "ModeOperate.h"
+#include "./src/modes/Mode.h"
+#include "./src/modes/ModeCalibrate.h"
+#include "./src/modes/ModeOperate.h"
 
 // Initialize the pointers before getting the instances
 Input *Input::instance = 0;

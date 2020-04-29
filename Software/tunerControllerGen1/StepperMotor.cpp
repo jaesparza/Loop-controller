@@ -52,7 +52,7 @@ void StepperMotor::sendPulse() {
     delayMicroseconds(activeDuration);
 }
 
-StepperMotor *StepperMotor() {
+StepperMotor *StepperMotor::getInstance() {
     if (!instance) {
         instance = new StepperMotor();
     }

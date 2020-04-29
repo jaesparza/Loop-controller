@@ -37,6 +37,10 @@ boolean calibrationComplete = false;
 // Strategy      * operationStrategy;
 
 // Initialize the pointers before getting the instances
+Input *Input::instance = 0;
+UI *UI::instance = 0;
+StepperMotor *StepperMotor::instance = 0;
+
 Input *userInput = 0;
 UI *display = 0;
 StepperMotor *stepper = 0;
@@ -44,8 +48,8 @@ StepperMotor *stepper = 0;
 void setup() {
 
     userInput = Input::getInstance();
-    display = Input::getInstance();
-    stepper = Input::StepperMotor();
+    display = UI::getInstance();
+    stepper = StepperMotor::getInstance();
 
     // Initialize hardware
     display->initLCD();

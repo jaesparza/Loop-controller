@@ -1,20 +1,20 @@
 /*
  *  Filename: HardwareConfig.h
  *
- *  Description:
- *   - Contains the hardware specific configurations
- *   - Defines timing delays for stepper motor control
+ * Description:
+ *  - Contains the hardware specific configurations
+ *  - Defines timing delays for stepper motor control
  *
- *  This software can be reused with other hardware configuration by only
+ * This software can be reused with other hardware configuration by only
  * changing the signal mapping.
  *
- *  WARGING: High voltages and lethal currents can develop in an efficient loop
- * antenna. If not properly constructed, lethal voltages could be present in
+ * WARGING: High voltages and lethal currents can develop in an efficient loop
+ * antenna. If not properly constructed, lethal voltages could be derived to
  * your control board. Us it at your OWN risk.
  *
- *  Last update: see GIT log
+ * Last update: see GIT log
  *
- *  Author: jaesparza - jaesparza@gmail.com
+ * Author: jaesparza - jaesparza@gmail.com
  */
 
 #ifndef HARDWARECONFIG_H_

@@ -18,8 +18,8 @@ boolean waitForRelease(){
   return true;
 }*/
 
-#ifndef UI_H_
-#define UI_H_
+#ifndef UI_H
+#define UI_H
 
 #include "HardwareConfig.h"
 #include "characterDefinitions.h"
@@ -36,6 +36,10 @@ boolean waitForRelease(){
 #define CONFIG_MESSAGE   "CFG mode - LOW"
 #define LINE_1_COUNT     "Position: "
 #define LINE_1_COUNT_LEN 10
+
+#define MODE_CALIBRATION_MESSAGE "Calibration"
+#define MODE_OPERATION_MESSAGE   "Operation"
+#define CALIBRATION_COMPLETED    "Calibration done"
 
 class UI {
   public:
@@ -55,6 +59,7 @@ class UI {
     void updateRefreshCount();
     void update(int);
     static UI *getInstance();
+    void showMode(String);
 
   private:
     long int lastRefresh = 0;

@@ -5,23 +5,26 @@
 
 class ModeCalibrate : public Mode {
   private:
+    //@TODO: Calibration routine has to be written
     void calibration() {
         // waitForRelease();
         userInput->readInputs();
 
         if (userInput->getExtraPB() == false) {
-            display->showMode(CALIBRATION_COMPLETED);
+            display->showText(CALIBRATION_COMPLETED);
         }
     }
+    /////////////////////////////////////////////////////
 
     //@TODO: Store max count here has to be implemented so it writes to EEPROM
     bool storeMaxCount(int maxCount) {
         return true;
     }
+    /////////////////////////////////////////////////////
 
   public:
     virtual void execute() {
-        display->showMode(MODE_CALIBRATION_MESSAGE);
+        display->showText(MODE_CALIBRATION_MESSAGE);
         calibration();
     }
 

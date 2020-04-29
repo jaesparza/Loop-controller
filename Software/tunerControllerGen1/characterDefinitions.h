@@ -10,7 +10,7 @@
 #include <Arduino.h>
 
 /* clang-format off */
-// Easier to see the character if they are not formatted by clang
+// Easier to see the characters if they are not formatted by clang
 static uint8_t solidBlock[8] = {
     B11111,
     B11111,

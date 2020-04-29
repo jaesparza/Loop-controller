@@ -1,28 +1,33 @@
 /*
-*  Filename: 
-*  Description:
-* 
-*  Project: Loop atenna control
-*  Hardware schematics: See HW folder in Github
-*  
-*  WARGING: High voltages and lethal currents can develop in an efficient loop antenna. If not properly constructed,
-*  lethal voltages could be present in your control board. Us it at your OWN risk.
-* 
-*  Author: jaesparza - jaesparza@gmail.com
-*
-* Pending improvements
-*  - updateCount takes as parameter int however, the maximum number of counts is stored in a long,
-*    this has to be fixed
-*  - create two strategies to control the motor: configuration and operation
-*  - establish new, smooth control parameters for a 400 steps stepper motor
-*  - modify the code such that it stores position in eeprom
-*/
-#include <Arduino.h>
-#include "HardwareConfig.h"
+ * Filename:     tunnerControlGen1.ino
+ * Description:  main file for the tunner control unit.
+ *
+ * Compiled with arduino IDE version 1.8.10, edited with VScode and formatted
+ * with with clang-format.
+ *
+ * Project: Loop atenna control - Gen 1
+ * Hardware schematics: See HW folder in Github
+ *
+ * WARGING: High voltages and lethal currents can develop in an efficient loop
+ * antenna. If not properly constructed, lethal voltages could be present in
+ * your control board. Us it at your OWN risk.
+ *
+ * Author: jaesparza - jaesparza@gmail.com
+ *
+ * Pending improvements:
+ *  - updateCount takes as parameter int however, the maximum number of counts
+ *    is stored in a long, this has to be fixed
+ *  - create two strategies to control the motor: configuration and operation
+ *  - establish new, smooth control parameters for a 400 steps stepper motor
+ *  - modify the code such that it stores position in eeprom
+ */
 
-#include "UI.h"
+#include "HardwareConfig.h"
+#include <Arduino.h>
+
 #include "Input.h"
 #include "StepperMotor.h"
+#include "UI.h"
 
 // Define different operational modes
 #define BOOT_NORMAL_MODE false
@@ -31,41 +36,40 @@ boolean bootMode = BOOT_NORMAL_MODE;
 boolean calibrationComplete = false;
 // Strategy      * operationStrategy;
 
-Input         * userInput;
-UI            * display;
-StepperMotor  * stepper;
+Input *userInput;
+UI *display;
+StepperMotor *stepper;
 
 void setup() {
 
-  userInput = new Input();
-  display = new UI();
-  stepper = new StepperMotor();
-  
-  // Initialize hardware
-  display->initLCD();
-  userInput->initInput();
-  stepper->initMotorState();
+    userInput = new Input();
+    display = new UI();
+    stepper = new StepperMotor();
 
-  // Initialize UI
-  display->makeEmptyBar();
-  display->showText();
+    // Initialize hardware
+    display->initLCD();
+    userInput->initInput();
+    stepper->initMotorState();
 
-  // Check inputs and enter configuration configuration mode if requested
-  userInput->readInputs();
+    // Initialize UI
+    display->makeEmptyBar();
+    display->showText();
 
-  if (userInput->getExtraPB()==PUSHED) {
-    bootMode = BOOT_CONFIG_MODE;
-    //operationStrategy = new Configuration();
-  }
-  else {
-     bootMode = BOOT_NORMAL_MODE;
-    //operationStrategy = new NormalOperation();
-  }
+    // Check inputs and enter configuration configuration mode if requested
+    userInput->readInputs();
+
+    if (userInput->getExtraPB() == PUSHED) {
+        bootMode = BOOT_CONFIG_MODE;
+        // operationStrategy = new Configuration();
+    } else {
+        bootMode = BOOT_NORMAL_MODE;
+        // operationStrategy = new NormalOperation();
+    }
 }
 
 bool storeMaxCount(int maxCount) {
 
-  return true;
+    return true;
 }
 
 void loop() {
@@ -73,47 +77,46 @@ void loop() {
     // operationStrategy->run();
 
     if (bootMode == BOOT_CONFIG_MODE) {
-      while(1) { configuration(); } // No need to re-evaluate bootMode
-    }
-    else { // BOOT_NORMAL_MODE
-      while(1) { 
-        normalOperation(); 
-       } // No need to re-evaluate bootMode, will iterate here
+        while (1) {
+            configuration();
+        }    // No need to re-evaluate bootMode
+    } else { // BOOT_NORMAL_MODE
+        while (1) {
+            normalOperation();
+        } // No need to re-evaluate bootMode, will iterate here
     }
 }
 
 void configuration() {
- // waitForRelease();
-  userInput->readInputs();
+    // waitForRelease();
+    userInput->readInputs();
 
-  if (userInput->getExtraPB() == false) { 
-    storeMaxCount(10); 
-  }
+    if (userInput->getExtraPB() == false) {
+        storeMaxCount(10);
+    }
 }
 
 void normalOperation() {
-  userInput->readInputs();
-  display->update(stepper->getRotationCount());
-  operateMotor();
+    userInput->readInputs();
+    display->update(stepper->getRotationCount());
+    operateMotor();
 }
 
 void operateMotor() {
 
-  stepper->setSpeed(userInput->getSpeed());
+    stepper->setSpeed(userInput->getSpeed());
 
-   if (userInput->isRotateCW()) {
-      stepper->enableMotor();
-      stepper->rotateCW();
-      display->updateRefreshCount();
-  }
-   else if(userInput->isRotateCCW()) {
-      stepper->enableMotor();
-      stepper->rotateCCW();
-      display->updateRefreshCount();
-  }
-  else {
-    stepper->disableMotor();
-  }
+    if (userInput->isRotateCW()) {
+        stepper->enableMotor();
+        stepper->rotateCW();
+        display->updateRefreshCount();
+    } else if (userInput->isRotateCCW()) {
+        stepper->enableMotor();
+        stepper->rotateCCW();
+        display->updateRefreshCount();
+    } else {
+        stepper->disableMotor();
+    }
 
-  delay(OPERATION_DELAY);
+    delay(OPERATION_DELAY);
 }

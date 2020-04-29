@@ -1,13 +1,14 @@
 
+#define SOLID_BLOCK     0
+#define LEFT_DELIMITER  1
+#define RIGHT_DELIMITER 2
+#define POSITION_BAR    3
+#define EMPTY_LEFT      4
+#define EMPTY_RIGHT     5
+#define EMPTY_CHARACTER 6
 
-#define SOLID_BLOCK      0
-#define LEFT_DELIMITER   1
-#define RIGHT_DELIMITER  2
-#define POSITION_BAR     3
-#define EMPTY_LEFT       4
-#define EMPTY_RIGHT      5
-#define EMPTY_CHARACTER  6
-
+/* clang-format off */
+// Easier to see the character if they are not formatted by clang
 static byte solidBlock[8] = {
     B11111,
     B11111,
@@ -144,3 +145,4 @@ static byte emptyLeft[8] = {
     B10000,
     B11111
 };
+/* clang-format on */

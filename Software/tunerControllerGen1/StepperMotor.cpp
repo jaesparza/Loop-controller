@@ -1,20 +1,18 @@
 #include "StepperMotor.h"
 
 void StepperMotor::initMotorState() {
-  digitalWrite(DIRECTION_PIN,HIGH);
-  disableMotor();
+    digitalWrite(DIRECTION_PIN, HIGH);
+    disableMotor();
 }
 
 long int StepperMotor::getRotationCount() {
     return rotationCount;
 }
 
-
 void StepperMotor::setSpeed(int speed) {
     if (speed == SLOW) {
         activeDuration = durationSlow;
-    }
-    else {
+    } else {
         activeDuration = durationFast;
     }
 }
@@ -28,13 +26,13 @@ void StepperMotor::setFast() {
 }
 
 void StepperMotor::rotateCW() {
-    digitalWrite(DIRECTION_PIN,HIGH);
+    digitalWrite(DIRECTION_PIN, HIGH);
     rotationCount--;
     sendPulse();
 }
 
 void StepperMotor::rotateCCW() {
-    digitalWrite(DIRECTION_PIN,LOW);
+    digitalWrite(DIRECTION_PIN, LOW);
     rotationCount++;
     sendPulse();
 }
@@ -48,8 +46,8 @@ void StepperMotor::disableMotor() {
 }
 
 void StepperMotor::sendPulse() {
-    digitalWrite(STEP_PIN,HIGH);
+    digitalWrite(STEP_PIN, HIGH);
     delayMicroseconds(activeDuration);
-    digitalWrite(STEP_PIN,LOW);
+    digitalWrite(STEP_PIN, LOW);
     delayMicroseconds(activeDuration);
 }

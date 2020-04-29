@@ -1,3 +1,4 @@
+/* clang-format off */
 /*
  *  LiquidCrystalFast.cpp, version 1.1
  * 
@@ -435,4 +436,4 @@ void LiquidCrystalFast::write4bits(uint8_t value)
 	digitalWrite(en, HIGH);   // enable pulse must be >450ns
 	digitalWrite(en, LOW);
 }
- 
+/* clang-format on */

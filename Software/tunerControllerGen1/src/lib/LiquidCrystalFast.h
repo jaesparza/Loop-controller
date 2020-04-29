@@ -1,3 +1,4 @@
+/* clang-format off */
 #ifndef LiquidCrystalFast_h
 #define LiquidCrystalFast_h
 
@@ -144,3 +145,4 @@ protected:
 };
 
 #endif
+/* clang-format on */

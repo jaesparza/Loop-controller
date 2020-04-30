@@ -54,7 +54,6 @@ The firmaware can be configured to drive motors at different speeds by altering 
 | OPERATION_DELAY_FAST  | Delay between pulses in fast mode.| milliseconds | 
 | MAX_COUNT             | Maximum number of counts for a full progress bar. | N/A - discrete count | 
 | REFRESH_INTERVAL      | Number of pulses needed to trigger a LCD update. | N/A - discrete count  |
-|||
 
 These parameters can be set in the file `HardwareConfig.h` by activating the relevant configuration via `#define CONF_#` or writing an additional one. Extract of HardwareConfig, with `CONF_1` as active configuration below.
 
@@ -93,4 +92,3 @@ In addition to the parameters from above, microstepping in the stepper driver is
 | L   | H   | L   | 1/4 step  |
 | H   | H   | L   | 1/8 step  |
 | H   | H   | H   | 1/16 step |
-|||

@@ -5,37 +5,52 @@
 
 class ModeOperate : public Mode {
   private:
-    void operateMotor() {
+    uint8_t operateMotor(int speed, uint8_t CW, uint8_t CCW) {
 
-        stepper->setSpeed(userInput->getSpeed());
+        uint8_t motorMoved = false;
+        stepper->setSpeed(speed);
 
-        if (userInput->isRotateCW()) {
+        if (CW) {
             stepper->enableMotor();
             stepper->rotateCW();
-            display->updateRefreshCount();
-        } else if (userInput->isRotateCCW()) {
+            motorMoved = true;
+        } else if (CCW) {
             stepper->enableMotor();
             stepper->rotateCCW();
-            display->updateRefreshCount();
+            motorMoved = true;
         } else {
             stepper->disableMotor();
-            display->updateImmediate();
-            //@ TODO here we could also update the count
+            motorMoved = false;
         }
 
-        if (userInput->getSpeed() == SLOW) {
+        if (speed == SLOW) {
             delay(OPERATION_DELAY_SLOW);
         } else {
             delay(OPERATION_DELAY_FAST);
         }
+        return motorMoved;
     }
 
   public:
     virtual void execute() {
         // display->showText(MODE_OPERATION_MESSAGE);
+
+        uint8_t moved = false;
+
         userInput->readInputs();
         display->update(stepper->getRotationCount());
-        operateMotor();
+
+        moved = operateMotor(userInput->getSpeed(), userInput->isRotateCW(),
+                             userInput->isRotateCCW());
+
+        if (moved) {
+            display->updateRefreshCount();
+            // The motor has just moved, so do not update EEPROM position again
+            // since most likely it will move again in the coming iteration.
+        } else {
+            display->updateImmediate();
+            // Store now in EEPROM
+        }
     }
 
     ModeOperate(UI *disp, StepperMotor *stp, Input *ui) {

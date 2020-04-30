@@ -5,15 +5,25 @@ Main features are:
 * The firmware can be configured to control different kinds stepper motors at different speeds.
 * The LCD position bar can be recalibrated to represent approximate capacitance graphically between min and max values.
 * The LCD refresh rate can be reconfigured so it does not affect motor operation.
-* Easily portable to other architectures by changing the hw dependand class implementations (`Input.cpp`, `StepperMotor.cpp` and `UI.cpp`).
+* Capacitor position is stored in EEPROM and therefore is persistent accross reboots.
+* The firmare is easily portable to other architectures by changing the hw dependand class implementations (`Input.cpp`, `StepperMotor.cpp`, `UI.cpp` and `EepromAccess.h`).
 
 Features to be implemented:
-* EEPROM Storage of last position
 * Softlimits to stop rotation movement if going below MIN or beyond MAX positions.
 * Calibration mode
 
 Investigate:
 * Stepper driver modification to ground ROSC pin?
+
+## Operation
+
+* Select speed by toggling the speed switch between SLOW or FAST.
+* Move the capacitor in the desired direction by pushing CW or CCW. Progress bar and rotation count are incremented during movement and immediately upon pushbutton release.
+* To clear EEPROM contents and set the position count to 0:
+  1. Push reset button.
+  2. Push both CW and CCW buttons at the same time.
+  3. Release the reset button while keeping CW and CCW pushed.
+  4. Release CW and CCW 5) Board will boot and set the position to 0.
 
 ## Software structure
 The control software is structured as depicted below. Comments after `##`
@@ -36,6 +46,7 @@ tunerControlGen1/
 |   |   ├── UI.cpp
 |   |   ├── StepperMotor.h
 |   |   ├── StepperMotor.cpp
+|   |   ├── EepromAccess.h
 |   |   ├── Input.h
 |   |   └── Input.cpp
 |   └── 

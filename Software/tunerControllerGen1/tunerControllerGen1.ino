@@ -63,7 +63,7 @@ void setup() {
     // Check inputs and enter configuration configuration mode if requested
     userInput->readInputs();
 
-    if (userInput->getCcwIn() && userInput->getCwIn()) {
+    if (userInput->CwAndCCWPushed()) {
         eeprom->storePosition(0);
     }
 

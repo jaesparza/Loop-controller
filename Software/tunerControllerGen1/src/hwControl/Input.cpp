@@ -58,6 +58,14 @@ uint8_t Input::isRotateCW() {
     }
 }
 
+uint8_t Input::CwAndCCWPushed() {
+    if ((cwIn == PUSHED) && (ccwIn == PUSHED)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 Input *Input::getInstance() {
     if (!instance) {
         instance = new Input();

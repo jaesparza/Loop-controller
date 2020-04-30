@@ -15,8 +15,11 @@ class Input {
     int getExtraPB();
     void readInputs();
     void initInput();
+
     uint8_t isRotateCCW();
     uint8_t isRotateCW();
+    uint8_t CwAndCCWPushed();
+
     static Input *getInstance();
 
   private:

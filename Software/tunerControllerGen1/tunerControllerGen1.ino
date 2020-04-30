@@ -19,6 +19,7 @@
  */
 
 // Include hardware control classes
+#include "./src/hwControl/EepromAccess.h"
 #include "./src/hwControl/Input.h"
 #include "./src/hwControl/StepperMotor.h"
 #include "./src/hwControl/UI.h"
@@ -32,11 +33,13 @@
 Input *Input::instance = 0;
 UI *UI::instance = 0;
 StepperMotor *StepperMotor::instance = 0;
+EepromAccess *EepromAccess::instance = 0;
 
 // Global HAL declarations
 Input *userInput = 0;
 UI *display = 0;
 StepperMotor *stepper = 0;
+EepromAccess *eeprom = 0;
 
 // Global operational mode declaration
 Mode *currentMode = 0;
@@ -46,6 +49,7 @@ void setup() {
     userInput = Input::getInstance();
     display = UI::getInstance();
     stepper = StepperMotor::getInstance();
+    eeprom = EepromAccess::getInstance();
 
     // Initialize hardware
     display->initLCD();
@@ -60,9 +64,9 @@ void setup() {
     userInput->readInputs();
 
     if (userInput->getExtraPB() == PUSHED) {
-        currentMode = new ModeCalibrate(display, stepper, userInput);
+        currentMode = new ModeCalibrate(display, stepper, userInput, eeprom);
     } else {
-        currentMode = new ModeOperate(display, stepper, userInput);
+        currentMode = new ModeOperate(display, stepper, userInput, eeprom);
     }
 }
 

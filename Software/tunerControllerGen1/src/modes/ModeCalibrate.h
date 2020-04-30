@@ -28,7 +28,7 @@ class ModeCalibrate : public Mode {
         calibration();
     }
 
-    ModeCalibrate(UI *disp, StepperMotor *stp, Input *ui) {
+    ModeCalibrate(UI *disp, StepperMotor *stp, Input *ui, EepromAccess *epr) {
         display = disp;
         stepper = stp;
         userInput = ui;

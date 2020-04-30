@@ -11,6 +11,7 @@ class Mode {
     UI *display = 0;
     StepperMotor *stepper = 0;
     Input *userInput = 0;
+    EepromAccess *eeprom = 0;
 
   public:
     virtual void execute() = 0;

@@ -5,6 +5,7 @@
 
 class ModeOperate : public Mode {
   private:
+    uint8_t updatePending = false;
     uint8_t operateMotor(int speed, uint8_t CW, uint8_t CCW) {
 
         uint8_t motorMoved = false;
@@ -45,18 +46,23 @@ class ModeOperate : public Mode {
 
         if (moved) {
             display->updateRefreshCount();
+            updatePending = true;
             // The motor has just moved, so do not update EEPROM position again
             // since most likely it will move again in the coming iteration.
         } else {
             display->updateImmediate();
-            // Store now in EEPROM
+            if (updatePending) { // Store now in EEPROM
+                eeprom->storePosition(stepper->getRotationCount());
+                updatePending = false;
+            }
         }
     }
 
-    ModeOperate(UI *disp, StepperMotor *stp, Input *ui) {
+    ModeOperate(UI *disp, StepperMotor *stp, Input *ui, EepromAccess *epr) {
         display = disp;
         stepper = stp;
         userInput = ui;
+        eeprom = epr;
     }
 };
 

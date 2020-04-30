@@ -14,8 +14,8 @@
  * your control board. Us it at your OWN risk.
  *
  * Pending improvements:
- *  - modify the code such that it stores position in eeprom
- *  - write the calibration mode
+ *  - Write the calibration mode
+ *  - Add soft limits
  */
 
 // Include hardware control classes

@@ -23,7 +23,8 @@ Investigate:
   1. Push reset button.
   2. Push both CW and CCW buttons at the same time.
   3. Release the reset button while keeping CW and CCW pushed.
-  4. Release CW and CCW 5) Board will boot and set the position to 0.
+  4. Release CW and CCW
+  5. Board will boot and set the position to 0.
 
 ## Software structure
 The control software is structured as depicted below. Comments after `##`

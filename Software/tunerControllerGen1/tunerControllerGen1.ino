@@ -14,11 +14,8 @@
  * your control board. Us it at your OWN risk.
  *
  * Pending improvements:
- *  - updateCount takes as parameter int however, the maximum number of counts
- *    is stored in a long, this has to be fixed
  *  - modify the code such that it stores position in eeprom
- *  - correct the steps that are displayed after releasing the motor, they do
- * not change sign when chaging direction.
+ *  - write the calibration mode
  */
 
 // Include hardware control classes

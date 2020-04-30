@@ -118,13 +118,15 @@ void UI::updateCount(int rotationCount) {
 }
 
 void UI::updateImmediate() {
-    updateCount(refreshCount);
-    updateBar((refreshCount) / COUNT_PER_COL);
-    lastRefresh = refreshCount;
+    requestUpdate = true;
+}
+
+void UI::clearUpdateImmediate() {
+    requestUpdate = false;
 }
 
 void UI::update(int rotationCount) {
-    if ((refreshCount - lastRefresh) > REFRESH_INTERVAL) {
+    if (((refreshCount - lastRefresh) > REFRESH_INTERVAL) || requestUpdate) {
         // digitalWrite(PROFILE_PIN,HIGH);
         // Performing this update takes around 10 ms with both fastlib also with
         // arduino built-in LiquidCrystal library - Mileage may vary depending
@@ -139,6 +141,7 @@ void UI::update(int rotationCount) {
 
         lastRefresh = refreshCount;
     }
+    clearUpdateImmediate();
 }
 
 void UI::updateRefreshCount() {

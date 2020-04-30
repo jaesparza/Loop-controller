@@ -2,11 +2,11 @@
 #include <Arduino.h>
 
 void StepperMotor::initMotorState() {
-    digitalWrite(DIRECTION_PIN, HIGH);
     disableMotor();
+    digitalWrite(DIRECTION_PIN, HIGH);
 }
 
-long int StepperMotor::getRotationCount() {
+int StepperMotor::getRotationCount() {
     return rotationCount;
 }
 
@@ -16,14 +16,6 @@ void StepperMotor::setSpeed(int speed) {
     } else {
         activeDuration = durationFast;
     }
-}
-
-void StepperMotor::setSlow() {
-    activeDuration = DELAY_SLOW;
-}
-
-void StepperMotor::setFast() {
-    activeDuration = DELAY_FAST;
 }
 
 void StepperMotor::rotateCW() {

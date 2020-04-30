@@ -49,17 +49,20 @@ class UI {
     void showNumber(int, int, int);
     void udpateDisplay();
     void updateRefreshCount();
-    void update(int);
     static UI *getInstance();
     void showText(String);
     void updateImmediate();
+    void update(int);
 
   private:
-    long int lastRefresh = 0;
-    long int refreshCount = 0;
+    int lastRefresh = 0;
+    int refreshCount = 0;
+    uint8_t requestUpdate = false;
 
     static UI *instance;
     UI();
+
+    void clearUpdateImmediate();
 };
 
 #endif /* UI_H_ */

@@ -11,26 +11,18 @@
 
 class StepperMotor {
   public:
-    void sendPulse();
-
     void initMotorState();
-
     void rotateCW();
     void rotateCCW();
     void setSpeed(int speed);
-
     void enableMotor();
     void disableMotor();
 
-    void setSlow();
-    void setFast();
-
-    long int getRotationCount();
-
+    int getRotationCount();
     static StepperMotor *getInstance();
 
   private:
-    volatile long int rotationCount = 0;
+    int rotationCount = 0;
     int orientation = 0;
     int speed = 0;
 
@@ -40,6 +32,8 @@ class StepperMotor {
 
     static StepperMotor *instance;
     StepperMotor();
+
+    void sendPulse();
 };
 
 #endif // STEPPER_MOTOR_H

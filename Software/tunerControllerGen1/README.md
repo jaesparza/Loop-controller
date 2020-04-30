@@ -5,11 +5,15 @@ Main features are:
 * The firmware can be configured to control different kinds stepper motors at different speeds.
 * The LCD position bar can be recalibrated to represent approximate capacitance graphically between min and max values.
 * The LCD refresh rate can be reconfigured so it does not affect motor operation.
-* EEPROM Storage of last position
 * Easily portable to other architectures by changing the hw dependand class implementations (`Input.cpp`, `StepperMotor.cpp` and `UI.cpp`).
 
 Features to be implemented:
+* EEPROM Storage of last position
 * Softlimits to stop rotation movement if going below MIN or beyond MAX positions.
+* Calibration mode
+
+Investigate:
+* Stepper driver modification to ground ROSC pin?
 
 ## Software structure
 The control software is structured as depicted below. Comments after `##`
@@ -38,11 +42,21 @@ tunerControlGen1/
 └── 
 ```
 
-## Description
-
 ## How to configure the firmware
 
-Insert table with parameter description
+The firmaware can be configured to drive motors at different speeds by altering the timing parameters in the table below. Additionally, care must be taken so the update of the LCD does not interfere the driver pulsing to a point in which it affects smooth movement. This can be controlled by modifying the number of pulses required to trigger a display update. 
+
+| Parameter name        | Description   | Unit |
+|-----------------------| --------------|------|
+| DELAY_SLOW            | Pulse duration for slow operation. | microseconds | 
+| DELAY_FAST            | Pulse duration for fast operation.   | microseconds | 
+| OPERATION_DELAY_SLOW  | Delay between pulses in slow mode.| milliseconds |
+| OPERATION_DELAY_FAST  | Delay between pulses in fast mode.| milliseconds | 
+| MAX_COUNT             | Maximum number of counts for a full progress bar. | N/A - discrete count | 
+| REFRESH_INTERVAL      | Number of pulses needed to trigger a LCD update. | N/A - discrete count  |
+|||
+
+These parameters can be set in the file `HardwareConfig.h` by activating the relevant configuration via `#define CONF_#` or writing an additional one. Extract of HardwareConfig, with `CONF_1` as active configuration below.
 
 ```C
 #define CONF_1
@@ -69,3 +83,14 @@ Insert table with parameter description
 #define OPERATION_DELAY_FAST 10
 #endif // CONF_1
 ```
+
+In addition to the parameters from above, microstepping in the stepper driver is recommended for smoother operation. This firmware interfaces the A4988 driver, that supports the following microstepping options:
+
+| MS1 | MS2 | MS3 | Microstep |
+|-----|-----|-----|-----------|
+| L   | L   | L   | Full step |
+| H   | L   | L   | 1/2  step |
+| L   | H   | L   | 1/4 step  |
+| H   | H   | L   | 1/8 step  |
+| H   | H   | H   | 1/16 step |
+|||

@@ -23,7 +23,7 @@ tunerControlGen1/
 |── tunnerControllerGen1.ino                ## Initialization and entry point
 ├── HardwareConfig.h                        ## Configuration of hardware connections and motor timing
 ├── src/                                    
-│   ├── lib                                 ## Thir party library for faster LCD interfacing (no blocking)
+│   ├── lib                                 ## Third party library for faster LCD interfacing (no blocking)
 |   |   ├── LiquidCrystalFast.h
 |   |   └── LiquidCrystalFast.cpp
 │   ├── modes                               ## Operational modes

@@ -52,9 +52,9 @@ void setup() {
     eeprom = EepromAccess::getInstance();
 
     // Initialize hardware
-    display->initLCD();
     userInput->initInput();
     stepper->initMotorState();
+    display->initLCD();
 
     // Initialize UI
     display->makeEmptyBar();
@@ -62,6 +62,13 @@ void setup() {
 
     // Check inputs and enter configuration configuration mode if requested
     userInput->readInputs();
+
+    if (userInput->getCcwIn() && userInput->getCwIn()) {
+        eeprom->storePosition(0);
+    }
+
+    // Recover last position from memory
+    stepper->setRotationCount(eeprom->getPosition());
 
     if (userInput->getExtraPB() == PUSHED) {
         currentMode = new ModeCalibrate(display, stepper, userInput, eeprom);

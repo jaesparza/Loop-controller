@@ -3,7 +3,7 @@
 
 void StepperMotor::initMotorState() {
     disableMotor();
-    digitalWrite(DIRECTION_PIN, HIGH);
+    // digitalWrite(DIRECTION_PIN, HIGH);
 }
 
 int StepperMotor::getRotationCount() {
@@ -50,6 +50,10 @@ StepperMotor *StepperMotor::getInstance() {
         instance = new StepperMotor();
     }
     return instance;
+}
+
+void StepperMotor::setRotationCount(int rotCount) {
+    rotationCount = rotCount;
 }
 
 StepperMotor::StepperMotor() {}

@@ -14,6 +14,8 @@ void Input::initInput() {
     pinMode(ENABLE_PIN, OUTPUT);
     pinMode(DIRECTION_PIN, OUTPUT);
 
+    digitalWrite(ENABLE_PIN, HIGH);
+
     digitalWrite(PROFILE_PIN, LOW);
 }
 

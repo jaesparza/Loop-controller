@@ -19,12 +19,13 @@ class StepperMotor {
     void disableMotor();
 
     int getRotationCount();
+    void setRotationCount(int rotCount);
     static StepperMotor *getInstance();
 
   private:
     int rotationCount = 0;
     int orientation = 0;
-    int speed = 0;
+    int speed = SLOW;
 
     int activeDuration = DELAY_SLOW;
     int const durationSlow = DELAY_SLOW;

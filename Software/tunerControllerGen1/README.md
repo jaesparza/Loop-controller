@@ -1,4 +1,4 @@
-# Tunner controller - Generation 1
+# Tuner controller - Generation 1
 This is the firmare for the first generation control board. It has been developed using CPP and parts of the Arduino framework as Hardware Abstraction Layer (HAL). 
 
 Main features are:

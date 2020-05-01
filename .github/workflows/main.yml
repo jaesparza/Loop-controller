@@ -32,5 +32,6 @@ jobs:
     - name: Compile sketch
       run: |
         arduino-cli compile ./Software/tunerControllerGen1/tunerControllerGen1.ino --fqbn arduino:avr:uno
-        arduino-cli compile ./Software/tunnerControllerMKII/tunnerControllerMKII.ino --fqbn arduino:avr:uno
+        ## Taken out of compile script until getting the promicro board configured
+        ## arduino-cli compile ./Software/tunnerControllerMKII/tunnerControllerMKII.ino --fqbn arduino:avr:uno
 

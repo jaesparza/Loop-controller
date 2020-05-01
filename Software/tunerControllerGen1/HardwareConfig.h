@@ -51,7 +51,7 @@
 
 //#define REFRESH_INTERVAL 500 //@TODO: document this --  Worked fine
 
-#define CONF_1
+#define CONF_3
 
 #ifdef CONF_1
 /* Configuration for a stepper motor of 400 pulses per revolution, no planetary
@@ -87,11 +87,32 @@
  *           2 - LOW
  *           3 - LOW
  */
-#define DELAY_SLOW      300
-#define DELAY_FAST      150
-#define MAX_COUNT       18036
-#define OPERATION_DELAY 0
+#define REFRESH_INTERVAL     100000
+#define DELAY_SLOW           100
+#define DELAY_FAST           100
+#define MAX_COUNT            18036
+#define OPERATION_DELAY_SLOW 1
+#define OPERATION_DELAY_FAST 0
 #endif // CONF_2
+
+/* Configuration for the vacuum capacitor assembly.
+ * Pending to adjust:
+ *  - The timing for the LCD.
+ *  - The LCD refresh rate.
+ *
+ *  Microswitches configured ...
+ *  switches 1 - LOW/HIGH
+ *           2 - LOW/HIGH
+ *           3 - LOW/HIGH
+ */
+#ifdef CONF_3
+#define REFRESH_INTERVAL     10000000
+#define DELAY_SLOW           300
+#define DELAY_FAST           150
+#define MAX_COUNT            1600
+#define OPERATION_DELAY_SLOW 0
+#define OPERATION_DELAY_FAST 0
+#endif
 
 /* If new configuration is created, document it.
  * Replace the #error macros with the relevant figures.
@@ -104,7 +125,7 @@
  *           2 - LOW/HIGH
  *           3 - LOW/HIGH
  */
-#ifdef CONF_3
+#ifdef CONF_4
 #define REFRESH_INTERVAL     #error
 #define DELAY_SLOW           #error
 #define DELAY_FAST           #error

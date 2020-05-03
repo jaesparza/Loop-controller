@@ -38,26 +38,30 @@ class UI {
   public:
     void updateBar(int position);
     void initLCD();
-    void makeFullBar();
-    void makeEmptyBar();
-    void makeEmptyBar(int start, int last);
-    void clearLCDLine(int line);
-    void updateCount(int rotationCount);
-    void writeNumber(char n);
-    void removeNullTermination(char *buffer, int len);
-    void progressBarTest();
-    void showNumber(int, int, int);
-    void udpateDisplay();
+
     void updateRefreshCount();
     static UI *getInstance();
     void showText(String);
     void updateImmediate();
-    void update(int);
+    void update(long);
+
+    void makeFullBar();
+    void makeEmptyBar();
+
+    void progressBarTest();
 
   private:
-    int lastRefresh = 0;
-    int refreshCount = 0;
+    long lastRefresh = 0;
+    long refreshCount = 0;
     uint8_t requestUpdate = false;
+
+    void updateCount(int rotationCount);
+    void writeNumber(char n);
+    void removeNullTermination(char *buffer, int len);
+    void showNumber(int, int, int);
+
+    void makeEmptyBar(int start, int last);
+    void clearLCDLine(int line);
 
     static UI *instance;
     UI();

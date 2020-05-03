@@ -125,7 +125,10 @@ void UI::clearUpdateImmediate() {
     requestUpdate = false;
 }
 
-void UI::update(int rotationCount) {
+void UI::update(long rtC) {
+
+    int rotationCount = (int)(rtC / DECIMATE);
+
     if (((refreshCount - lastRefresh) > REFRESH_INTERVAL) || requestUpdate) {
         // digitalWrite(PROFILE_PIN,HIGH);
         // Performing this update takes around 10 ms with both fastlib also with

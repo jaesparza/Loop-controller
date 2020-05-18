@@ -9,11 +9,8 @@ Main features are:
 * The firmare is easily portable to other architectures by changing the hw dependand class implementations (`Input.cpp`, `StepperMotor.cpp`, `UI.cpp` and `EepromAccess.h`).
 
 Features to be implemented:
-* Softlimits to stop rotation movement if going below MIN or beyond MAX positions.
 * Calibration mode
-
-Investigate:
-* Stepper driver modification to ground ROSC pin?
+* Investigate: stepper driver modification to ground ROSC pin?
 
 ## Operation
 
@@ -65,8 +62,10 @@ The firmaware can be configured to drive motors at different speeds by altering 
 | OPERATION_DELAY_SLOW  | Delay between pulses in slow mode.| milliseconds |
 | OPERATION_DELAY_FAST  | Delay between pulses in fast mode.| milliseconds | 
 | DECIMATE              | Division factor applied to the steps count printed on the LCD | N/A - discrete count|
-| MAX_COUNT             | Maximum number of counts for a full progress bar. | N/A - discrete count | 
+| MAX_COUNT             | Maximum number of counts for a full progress bar. | steps | 
 | REFRESH_INTERVAL      | Number of pulses needed to trigger a LCD update. | N/A - discrete count  |
+| SOFT_LIMIT_MIN        | Minimum stepper count. Steps will not be sent below this limit (CW steps).| steps |
+| SOFT_LIMIT_MIN        | Maximum stepper count. Steps will not be sent above this limit (CCW steps).| steps|
 
 These parameters can be set in the file `HardwareConfig.h` by activating the relevant configuration via `#define CONF_#` or writing an additional one. Extract of HardwareConfig, with `CONF_1` as active configuration below.
 
@@ -94,6 +93,8 @@ These parameters can be set in the file `HardwareConfig.h` by activating the rel
 #define DECIMATE             1
 #define OPERATION_DELAY_SLOW 50
 #define OPERATION_DELAY_FAST 10
+#define SOFT_LIMIT_MIN       0
+#define SOFT_LIMIT_MAX       1600
 #endif // CONF_1
 ```
 

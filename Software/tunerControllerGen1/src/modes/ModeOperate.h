@@ -12,13 +12,17 @@ class ModeOperate : public Mode {
         stepper->setSpeed(speed);
 
         if (CW) {
-            stepper->enableMotor();
-            stepper->rotateCW();
-            motorMoved = true;
+            if (stepper->getRotationCount() > SOFT_LIMIT_MIN) {
+                stepper->enableMotor();
+                stepper->rotateCW();
+                motorMoved = true;
+            }
         } else if (CCW) {
-            stepper->enableMotor();
-            stepper->rotateCCW();
-            motorMoved = true;
+            if (stepper->getRotationCount() < SOFT_LIMIT_MAX) {
+                stepper->enableMotor();
+                stepper->rotateCCW();
+                motorMoved = true;
+            }
         } else {
             stepper->disableMotor();
             motorMoved = false;

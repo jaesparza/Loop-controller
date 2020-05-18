@@ -74,6 +74,8 @@
 #define DECIMATE             1
 #define OPERATION_DELAY_SLOW 50
 #define OPERATION_DELAY_FAST 10
+#define SOFT_LIMIT_MIN       0
+#define SOFT_LIMIT_MAX       1600
 #endif // CONF_1
 
 #ifdef CONF_2
@@ -95,6 +97,9 @@
 #define DECIMATE             10
 #define OPERATION_DELAY_SLOW 0
 #define OPERATION_DELAY_FAST 0
+#define SOFT_LIMIT_MIN       0
+#warning "Soft limit max remains to be checked"
+#define SOFT_LIMIT_MAX 15900
 #endif
 
 #ifdef CONF_3
@@ -117,6 +122,8 @@
 #define DECIMATE             0
 #define OPERATION_DELAY_SLOW 0
 #define OPERATION_DELAY_FAST 0
+#define SOFT_LIMIT_MIN       0
+#define SOFT_LIMIT_MAX       0
 #endif
 
 #endif /* HARDWARECONFIG_H_ */

@@ -64,6 +64,7 @@ The firmaware can be configured to drive motors at different speeds by altering 
 | DELAY_FAST            | Pulse duration for fast operation.   | microseconds | 
 | OPERATION_DELAY_SLOW  | Delay between pulses in slow mode.| milliseconds |
 | OPERATION_DELAY_FAST  | Delay between pulses in fast mode.| milliseconds | 
+| DECIMATE              | Division factor applied to the steps count printed on the LCD | N/A - discrete count|
 | MAX_COUNT             | Maximum number of counts for a full progress bar. | N/A - discrete count | 
 | REFRESH_INTERVAL      | Number of pulses needed to trigger a LCD update. | N/A - discrete count  |
 
@@ -90,6 +91,7 @@ These parameters can be set in the file `HardwareConfig.h` by activating the rel
 #define DELAY_SLOW           300
 #define DELAY_FAST           100
 #define MAX_COUNT            1600
+#define DECIMATE             1
 #define OPERATION_DELAY_SLOW 50
 #define OPERATION_DELAY_FAST 10
 #endif // CONF_1

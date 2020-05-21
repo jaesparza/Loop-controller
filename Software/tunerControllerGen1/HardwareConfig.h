@@ -51,7 +51,11 @@
 
 //#define REFRESH_INTERVAL 500 //@TODO: document this --  Worked fine
 
-#define CONF_1
+// Select the configuration to be used
+#define CONF_2
+
+// If defined the motor control operation algorithm will not check for limits
+#define DISABLE_SOFT_LIMITS
 
 #ifdef CONF_1
 /* Configuration for a stepper motor of 400 pulses per revolution, no planetary
@@ -99,7 +103,7 @@
 #define OPERATION_DELAY_FAST 0
 #define SOFT_LIMIT_MIN       0
 #warning "Soft limit max remains to be checked"
-#define SOFT_LIMIT_MAX 15900
+#define SOFT_LIMIT_MAX 15900000
 #endif
 
 #ifdef CONF_3

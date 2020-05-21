@@ -49,8 +49,6 @@
 #define ROWS          2
 #define COUNT_PER_COL (MAX_COUNT / COLUMNS)
 
-//#define REFRESH_INTERVAL 500 //@TODO: document this --  Worked fine
-
 // Select the configuration to be used
 #define CONF_2
 

@@ -65,7 +65,7 @@ The firmaware can be configured to drive motors at different speeds by altering 
 | MAX_COUNT             | Maximum number of counts for a full progress bar. | steps | 
 | REFRESH_INTERVAL      | Number of pulses needed to trigger a LCD update. | N/A - discrete count  |
 | SOFT_LIMIT_MIN        | Minimum stepper count. Steps will not be sent below this limit (CW steps).| steps |
-| SOFT_LIMIT_MIN        | Maximum stepper count. Steps will not be sent above this limit (CCW steps).| steps|
+| SOFT_LIMIT_MAX        | Maximum stepper count. Steps will not be sent above this limit (CCW steps).| steps|
 
 These parameters can be set in the file `HardwareConfig.h` by activating the relevant configuration via `#define CONF_#` or writing an additional one. Extract of HardwareConfig, with `CONF_1` as active configuration below.
 
@@ -97,6 +97,8 @@ These parameters can be set in the file `HardwareConfig.h` by activating the rel
 #define SOFT_LIMIT_MAX       1600
 #endif // CONF_1
 ```
+
+Additionally, checking for `SOFT_LIMIT_MIN` and `SOFT_LIMIT_MAX` can be disabled by uncommenting `#define DISABLE_SOFT_LIMITS`.
 
 In addition to the parameters from above, microstepping in the stepper driver is recommended for smoother operation. This firmware interfaces the A4988 driver, that supports the following microstepping options:
 

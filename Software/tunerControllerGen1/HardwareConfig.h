@@ -30,6 +30,9 @@
 
 #define PROFILE_PIN A2
 
+// Potentiometer connected to ADC channel 0
+#define ADC_0 A0
+
 // Stepper driver signals
 #define STEP_PIN      9
 #define ENABLE_PIN    8

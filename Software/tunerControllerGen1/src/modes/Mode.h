@@ -1,6 +1,7 @@
 #ifndef _MODE_H
 #define _MODE_H
 
+#include "../../HardwareConfig.h"
 #include "../hwControl/Input.h"
 #include "../hwControl/StepperMotor.h"
 #include "../hwControl/UI.h"

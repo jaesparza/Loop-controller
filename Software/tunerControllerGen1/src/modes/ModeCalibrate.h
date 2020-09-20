@@ -7,12 +7,21 @@ class ModeCalibrate : public Mode {
   private:
     //@TODO: Calibration routine has to be written
     void calibration() {
+        display->showText(MODE_CALIBRATION_MESSAGE);
         // waitForRelease();
         userInput->readInputs();
 
         if (userInput->getExtraPB() == false) {
             display->showText(CALIBRATION_COMPLETED);
         }
+    }
+
+    void calibrationADC() {
+        display->clearLCDLine(1);
+        display->clearLCDLine(2);
+
+        int val = analogRead(ADC_0);
+        display->showText(String(val));
     }
     /////////////////////////////////////////////////////
 
@@ -24,8 +33,7 @@ class ModeCalibrate : public Mode {
 
   public:
     virtual void execute() {
-        display->showText(MODE_CALIBRATION_MESSAGE);
-        calibration();
+        calibrationADC();
     }
 
     ModeCalibrate(UI *disp, StepperMotor *stp, Input *ui, EepromAccess *epr) {

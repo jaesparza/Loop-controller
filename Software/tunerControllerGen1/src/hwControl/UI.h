@@ -50,6 +50,8 @@ class UI {
 
     void progressBarTest();
 
+    void clearLCDLine(int line);
+
   private:
     long lastRefresh = 0;
     long refreshCount = 0;
@@ -61,7 +63,6 @@ class UI {
     void showNumber(int, int, int);
 
     void makeEmptyBar(int start, int last);
-    void clearLCDLine(int line);
 
     static UI *instance;
     UI();

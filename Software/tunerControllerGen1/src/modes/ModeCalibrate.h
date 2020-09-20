@@ -22,6 +22,7 @@ class ModeCalibrate : public Mode {
 
         int val = analogRead(ADC_0);
         display->showText(String(val));
+        delay(1000);
     }
     /////////////////////////////////////////////////////
 

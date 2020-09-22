@@ -53,10 +53,7 @@
 #define COUNT_PER_COL (MAX_COUNT / COLUMNS)
 
 // Select the configuration to be used
-#define CONF_3
-
-// If defined the motor control operation algorithm will not check for limits
-#define DISABLE_SOFT_LIMITS
+#define CONF_1
 
 #ifdef CONF_1
 /* Configuration for a stepper motor of 400 pulses per revolution, no planetary
@@ -81,6 +78,9 @@
 #define OPERATION_DELAY_FAST 10
 #define SOFT_LIMIT_MIN       0
 #define SOFT_LIMIT_MAX       1600
+
+// If defined the motor control operation algorithm will not check for limits
+//#define DISABLE_SOFT_LIMITS
 #endif // CONF_1
 
 #ifdef CONF_2

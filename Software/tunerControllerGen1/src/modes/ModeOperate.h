@@ -6,40 +6,16 @@
 class ModeOperate : public Mode {
   private:
     uint8_t updatePending = false;
-    uint8_t operateMotor(int speed, uint8_t CW, uint8_t CCW) {
 
-        uint8_t motorMoved = false;
-        stepper->setSpeed(speed);
+    bool checkLimits() {
+        if (userInput->isRotateCW()) {
+            return ((stepper->getRotationCount()) > SOFT_LIMIT_MIN ? true
+                                                                   : false);
 
-        if (CW) {
-#ifndef DISABLE_SOFT_LIMITS
-            if (stepper->getRotationCount() > SOFT_LIMIT_MIN)
-#endif
-            {
-                stepper->enableMotor();
-                stepper->rotateCW();
-                motorMoved = true;
-            }
-        } else if (CCW) {
-#ifndef DISABLE_SOFT_LIMITS
-            if (stepper->getRotationCount() < SOFT_LIMIT_MAX)
-#endif
-            {
-                stepper->enableMotor();
-                stepper->rotateCCW();
-                motorMoved = true;
-            }
-        } else {
-            stepper->disableMotor();
-            motorMoved = false;
+        } else if (userInput->isRotateCCW()) {
+            return ((stepper->getRotationCount()) < SOFT_LIMIT_MAX ? true
+                                                                   : false);
         }
-
-        if (speed == SLOW) {
-            delay(OPERATION_DELAY_SLOW);
-        } else {
-            delay(OPERATION_DELAY_FAST);
-        }
-        return motorMoved;
     }
 
   public:
@@ -51,14 +27,19 @@ class ModeOperate : public Mode {
         userInput->readInputs();
         display->update(stepper->getRotationCount());
 
-        moved = operateMotor(userInput->getSpeed(), userInput->isRotateCW(),
-                             userInput->isRotateCCW());
+        if (checkLimits()) {
+            moved = operateMotor(userInput->getSpeed(), userInput->isRotateCW(),
+                                 userInput->isRotateCCW());
+        } else {
+            stepper->disableMotor();
+        }
 
         if (moved) {
             display->updateRefreshCount();
             updatePending = true;
-            // The motor has just moved, so do not update EEPROM position again
-            // since most likely it will move again in the coming iteration.
+            // The motor has just moved, so do not update EEPROM position
+            // again since most likely it will move again in the coming
+            // iteration.
         } else {
             display->updateImmediate();
             if (updatePending) { // Store now in EEPROM

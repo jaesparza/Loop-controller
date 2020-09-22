@@ -31,7 +31,7 @@
 #define PROFILE_PIN A2
 
 // Potentiometer connected to ADC channel 0
-#define ADC_0 A0
+#define ENCODER A0
 
 // Stepper driver signals
 #define STEP_PIN      9
@@ -53,7 +53,7 @@
 #define COUNT_PER_COL (MAX_COUNT / COLUMNS)
 
 // Select the configuration to be used
-#define CONF_2
+#define CONF_3
 
 // If defined the motor control operation algorithm will not check for limits
 #define DISABLE_SOFT_LIMITS
@@ -105,6 +105,7 @@
 #define SOFT_LIMIT_MIN       0
 #warning "Soft limit max remains to be checked"
 #define SOFT_LIMIT_MAX 15900000
+
 #endif
 
 #ifdef CONF_3
@@ -119,16 +120,21 @@
  *           2 - LOW/HIGH
  *           3 - LOW/HIGH
  */
-#error
-#define REFRESH_INTERVAL     0
-#define DELAY_SLOW           0
-#define DELAY_FAST           0
-#define MAX_COUNT            0
-#define DECIMATE             0
+
+#define REFRESH_INTERVAL     3000
+#define DELAY_SLOW           300
+#define DELAY_FAST           150
+#define MAX_COUNT            15900
+#define DECIMATE             1
 #define OPERATION_DELAY_SLOW 0
 #define OPERATION_DELAY_FAST 0
-#define SOFT_LIMIT_MIN       0
-#define SOFT_LIMIT_MAX       0
+
+#define SOFT_LIMIT_MIN 0
+#define SOFT_LIMIT_MAX 15900000
+
+#define ENCODER_MIN 378
+#define ENCODER_MAX 1023
+
 #endif
 
 #endif /* HARDWARECONFIG_H_ */

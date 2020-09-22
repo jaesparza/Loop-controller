@@ -20,7 +20,7 @@ class ModeCalibrate : public Mode {
         display->clearLCDLine(1);
         display->clearLCDLine(2);
 
-        int val = analogRead(ADC_0);
+        int val = analogRead(ENCODER);
         display->showText(String(val));
         delay(1000);
     }

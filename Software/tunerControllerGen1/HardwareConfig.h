@@ -53,7 +53,7 @@
 #define COUNT_PER_COL (MAX_COUNT / COLUMNS)
 
 // Select the configuration to be used
-#define CONF_1
+#define CONF_3
 
 #ifdef CONF_1
 /* Configuration for a stepper motor of 400 pulses per revolution, no planetary

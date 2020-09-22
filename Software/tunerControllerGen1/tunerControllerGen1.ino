@@ -25,6 +25,7 @@
 #include "./src/hwControl/UI.h"
 
 // Include operational logic classes
+#include "./src//modes/ModeOperateEncoder.h"
 #include "./src/modes/Mode.h"
 #include "./src/modes/ModeCalibrate.h"
 #include "./src/modes/ModeOperate.h"
@@ -70,11 +71,12 @@ void setup() {
     // Recover last position from memory
     stepper->setRotationCount(eeprom->getPosition());
 
-    //    if (userInput->getExtraPB() == PUSHED) {
     if (userInput->CwAndCCWPushed()) {
         currentMode = new ModeCalibrate(display, stepper, userInput, eeprom);
     } else {
         currentMode = new ModeOperate(display, stepper, userInput, eeprom);
+        // currentMode = new ModeOperateEncoder(display, stepper, userInput,
+        // eeprom);
     }
 }
 

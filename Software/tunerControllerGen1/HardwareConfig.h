@@ -133,7 +133,7 @@
 #define SOFT_LIMIT_MAX 15900000
 
 #define ENCODER_MIN 378
-#define ENCODER_MAX 1023
+#define ENCODER_MAX 1020
 
 #endif
 

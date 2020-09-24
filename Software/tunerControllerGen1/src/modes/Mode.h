@@ -12,7 +12,8 @@ class Mode {
     UI *display = 0;
     StepperMotor *stepper = 0;
     Input *userInput = 0;
-    EepromAccess *eeprom = 0;
+    long limitMin = 0;
+    long limitMax = 0;
 
     bool checkLimits();
 

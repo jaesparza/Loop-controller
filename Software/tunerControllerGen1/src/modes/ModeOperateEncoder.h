@@ -17,10 +17,10 @@ class ModeOperateEncoder : public Mode {
     bool checkLimits() {
         bool isWithinLimits = false;
         if (userInput->isRotateCW()) {
-            isWithinLimits = ((getCount() > ENCODER_MIN) ? true : false);
+            isWithinLimits = ((getCount() > limitMin) ? true : false);
 
         } else if (userInput->isRotateCCW()) {
-            isWithinLimits = ((getCount() < ENCODER_MAX) ? true : false);
+            isWithinLimits = ((getCount() < limitMax) ? true : false);
         }
         return isWithinLimits;
     }
@@ -46,11 +46,12 @@ class ModeOperateEncoder : public Mode {
     }
 
     ModeOperateEncoder(UI *disp, StepperMotor *stp, Input *ui,
-                       EepromAccess *epr) {
+                       long encoderLimitMin, long encoderLimitMax) {
         display = disp;
         stepper = stp;
         userInput = ui;
-        eeprom = epr;
+        limitMin = encoderLimitMin;
+        limitMax = encoderLimitMax;
     }
 };
 

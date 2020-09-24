@@ -6,15 +6,14 @@
 class ModeOperate : public Mode {
   private:
     uint8_t updatePending = false;
+    EepromAccess *eeprom = 0;
 
     bool checkLimits() {
         if (userInput->isRotateCW()) {
-            return ((stepper->getRotationCount()) > SOFT_LIMIT_MIN ? true
-                                                                   : false);
+            return ((stepper->getRotationCount()) > limitMin ? true : false);
 
         } else if (userInput->isRotateCCW()) {
-            return ((stepper->getRotationCount()) < SOFT_LIMIT_MAX ? true
-                                                                   : false);
+            return ((stepper->getRotationCount()) < limitMax ? true : false);
         }
     }
 
@@ -49,11 +48,15 @@ class ModeOperate : public Mode {
         }
     }
 
-    ModeOperate(UI *disp, StepperMotor *stp, Input *ui, EepromAccess *epr) {
+    ModeOperate(UI *disp, StepperMotor *stp, Input *ui, EepromAccess *epr,
+                long softLimitMin, long softLimitMax) {
         display = disp;
         stepper = stp;
         userInput = ui;
         eeprom = epr;
+
+        limitMin = softLimitMin;
+        limitMax = softLimitMax;
     }
 };
 

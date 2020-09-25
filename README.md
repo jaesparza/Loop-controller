@@ -1,5 +1,10 @@
 # Loop antenna tunning control [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) ![CI](https://github.com/jaesparza/Loop-controller/workflows/CI/badge.svg?branch=master)<br>
 
+
+> - High voltage and currents can develop in an efficient loop antenna. If not properly constructed, lethal currents could be derived to your control board.  
+> - I make no claims with regards to RF safety, EMC compatibility or compliance to standards of any kind.
+> - This is a home-made prototype for hobby applications, you (as potential builder) are solely responsible for your actions.
+
 This project implements a tunning control system for magnetic loop antennas. The antenna is tunned by turning a variable capacitor through a stepper motor at reduced speeds. The controller generates the step signals to be provided to the driver, allows movement only within the specified limits and handles the user interface.
 
 Main characteristics:
@@ -33,3 +38,5 @@ In my implementation I use an ethernet network cable to be run in parallel with 
 
  ## Wireless control - Prototype, on hold
 Currently under development, this second version of the controller features wireless control over 802.15.4. The remote control board is intended to be placed together with the antenna in the remote location. The user interacts with the control through a PC application.
+
+## Usage

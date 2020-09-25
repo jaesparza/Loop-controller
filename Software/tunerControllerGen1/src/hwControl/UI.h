@@ -52,12 +52,13 @@ class UI {
 
     void clearLCDLine(int line);
 
+    void updateCount(int rotationCount);
+
   private:
     long lastRefresh = 0;
     long refreshCount = 0;
     uint8_t requestUpdate = false;
 
-    void updateCount(int rotationCount);
     void writeNumber(char n);
     void removeNullTermination(char *buffer, int len);
     void showNumber(int, int, int);

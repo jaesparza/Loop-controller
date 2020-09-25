@@ -17,6 +17,10 @@ This repository hosts:
 The repository hosts two prototypes: a wired and a wireless control system. As of today only the wired system is complete.
 
 ## Wired control - Completed and deployed
+
+| [Software](https://github.com/jaesparza/Loop-controller/tree/master/Software/tunerControllerGen1) | 
+[Hardware](https://github.com/jaesparza/Loop-controller/tree/master/pcb/initialPrototype) |
+
 This is a working system relying on a wired connection to deliver motor coil currents as well as reading back the encoder position.
 
 The user interface is implemented through:
@@ -25,6 +29,7 @@ The user interface is implemented through:
 - a switch to select fast or slow speed.
 
 In my implementation I use an ethernet network cable to be run in parallel with the coaxial cable carrying the RF singal. I have not experienced problems with electrical noise or spurious readings in the ADC due to long cable runs.
+
 
  ## Wireless control - Prototype, on hold
 Currently under development, this second version of the controller features wireless control over 802.15.4. The remote control board is intended to be placed together with the antenna in the remote location. The user interacts with the control through a PC application.

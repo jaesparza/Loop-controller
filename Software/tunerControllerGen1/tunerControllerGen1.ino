@@ -70,13 +70,18 @@ void setup() {
 
     // Recover last position from memory
     stepper->setRotationCount(eeprom->getPosition());
-
     if (userInput->CwAndCCWPushed()) {
         currentMode = new ModeCalibrate(display, stepper, userInput, eeprom);
     } else {
-        currentMode = new ModeOperate(display, stepper, userInput, eeprom);
-        // currentMode = new ModeOperateEncoder(display, stepper, userInput,
-        // eeprom);
+#if defined(CONF_1) || defined(CONF_2)
+        currentMode = new ModeOperate(display, stepper, userInput, eeprom,
+                                      SOFT_LIMIT_MIN, SOFT_LIMIT_MAX);
+#elif defined(CONF_3)
+        currentMode = new ModeOperateEncoder(display, stepper, userInput,
+                                             ENCODER_MIN, ENCODER_MAX);
+#else
+#error "No active configuration"
+#endif
     }
 }
 

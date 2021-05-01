@@ -149,4 +149,73 @@ static uint8_t emptyLeft[8] = {
     0b10000,
     0b11111
 };
+
+
+
+static uint8_t rightDelimiter_2[8] = {
+    0b0,
+    0b00001,
+    0b11101,
+    0b11101,
+    0b11101,
+    0b11101,
+    0b00000,
+    0b0
+};
+
+static uint8_t leftDelimiter_2[8] = {
+    0b00000,
+    0b10000,
+    0b10111,
+    0b10111,
+    0b10111,
+    0b10111,
+    0b10000,
+    0b00000
+};
+
+static uint8_t positionBar_2[8] = {
+    0b0,
+    0b0,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b0,
+    0b0
+};
+
+static uint8_t emptyCharacter_2[8] = {
+    0b0,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b0
+};
+
+static uint8_t emptyRight_2[8] = {
+    0b0,
+    0b1,
+    0b1,
+    0b1,
+    0b1,
+    0b1,
+    0b1,
+    0b0
+};
+
+static uint8_t emptyLeft_2[8] = {
+    0b0,
+    0b10100,
+    0b10100,
+    0b10100,
+    0b10100,
+    0b10100,
+    0b10000,
+    0b0
+};
+
 /* clang-format on */

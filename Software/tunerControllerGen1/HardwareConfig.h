@@ -53,7 +53,7 @@
 #define COUNT_PER_COL (MAX_COUNT / COLUMNS)
 
 // Select the configuration to be used
-#define CONF_2
+#define CONF_3
 
 #ifdef CONF_1
 /* Configuration for a stepper motor of 400 pulses per revolution, no planetary
@@ -81,7 +81,7 @@
 #endif // CONF_1
 
 #ifdef CONF_2
-/* Configuration for a stepper motor 200 pulses per revolution and
+/*  Configuration for a stepper motor 200 pulses per revolution and
  *  a planetary gear reduction of 1:5
  *
  *  This motor is intented to be used with a vacuum capacitor of 16 turns and
@@ -106,16 +106,17 @@
 #endif
 
 #ifdef CONF_3
-/* If new configuration is created, document it.
- * Replace the #error macros with the relevant figures.
- * Configuration for a stepper motor ...
+/*  Configuration for a stepper motor 200 pulses per revolution and
+ *  a planetary gear reduction of 1:5
  *
- *  This motor is intented to be used with ...
+ *  This motor is intented to be used with a vacuum capacitor of 16 turns and
+ *  coupled directly to the capacitor shaft (no additional mechanical
+ * reduction).
  *
- *  Microswitches configured ...
- *  switches 1 - LOW/HIGH
- *           2 - LOW/HIGH
- *           3 - LOW/HIGH
+ *  Microswitches configured for maximum microstepping for minimum vibrations.
+ *  switches 1 - LOW
+ *           2 - LOW
+ *           3 - LOW
  */
 
 #define REFRESH_INTERVAL     3000
@@ -126,8 +127,10 @@
 #define OPERATION_DELAY_SLOW 0
 #define OPERATION_DELAY_FAST 0
 
-#define ENCODER_MIN 378
+#define ENCODER_MIN 350 //(before 378)
 #define ENCODER_MAX 1020
+
+#define ADC_COUNTS_PER_COL 42 // ((ENCODER_MAX - ENCODER_MIN) / 16)
 
 #endif
 

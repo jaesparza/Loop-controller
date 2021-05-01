@@ -28,12 +28,12 @@ class Mode {
             motorMoved = true;
 
         } else if (CCW) {
-
             stepper->enableMotor();
             stepper->rotateCCW();
             motorMoved = true;
+        }
 
-        } else {
+        if ((!CW) && (!CCW)) {
             stepper->disableMotor();
             motorMoved = false;
         }
@@ -43,6 +43,7 @@ class Mode {
         } else {
             delay(OPERATION_DELAY_FAST);
         }
+
         return motorMoved;
     }
 

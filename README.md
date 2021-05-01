@@ -1,4 +1,4 @@
-# Loop antenna tunning control [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) ![CI](https://github.com/jaesparza/Loop-controller/workflows/CI/badge.svg?branch=master)<br>
+# Loop antenna tunning control [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)<br>
 
 
 > - High voltage and currents can develop in an efficient loop antenna. If not properly constructed, lethal currents could be derived to your control board.  
@@ -36,7 +36,5 @@ The user interface is implemented through:
 In my implementation I use an ethernet network cable to be run in parallel with the coaxial cable carrying the RF singal. I have not experienced problems with electrical noise or spurious readings in the ADC due to long cable runs.
 
 
- ## Wireless control - Prototype, on hold
+## Wireless control - Prototype, on hold
 Currently under development, this second version of the controller features wireless control over 802.15.4. The remote control board is intended to be placed together with the antenna in the remote location. The user interacts with the control through a PC application.
-
-## Usage

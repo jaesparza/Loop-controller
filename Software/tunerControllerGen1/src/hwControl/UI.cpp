@@ -49,14 +49,15 @@ void UI::makeEmptyBar(int start, int last) {
 void UI::initLCD() {
     // Sets up the LCD's number of columns and rows
     lcd.begin(COLUMNS, ROWS);
+
     // Loads the custom characters in the predefined positions
     lcd.createChar(SOLID_BLOCK, solidBlock);
-    lcd.createChar(LEFT_DELIMITER, leftDelimiterThin);
-    lcd.createChar(RIGHT_DELIMITER, rightDelimiterThin);
-    lcd.createChar(POSITION_BAR, positionBarThin);
-    lcd.createChar(EMPTY_LEFT, emptyLeftThin);
-    lcd.createChar(EMPTY_RIGHT, emptyRightThin);
-    lcd.createChar(EMPTY_CHARACTER, emptyCharacterThin);
+    lcd.createChar(LEFT_DELIMITER, leftDelimiter_2);
+    lcd.createChar(RIGHT_DELIMITER, rightDelimiter_2);
+    lcd.createChar(POSITION_BAR, positionBar_2);
+    lcd.createChar(EMPTY_LEFT, emptyLeft_2);
+    lcd.createChar(EMPTY_RIGHT, emptyRight_2);
+    lcd.createChar(EMPTY_CHARACTER, emptyCharacter_2);
 }
 
 void UI::updateBar(int position) {
@@ -142,6 +143,21 @@ void UI::update(long rtC) {
         updateBar((rotationCount) / COUNT_PER_COL);
         // digitalWrite(PROFILE_PIN,LOW);
 
+        lastRefresh = refreshCount;
+    }
+    clearUpdateImmediate();
+}
+
+void UI::updatePositionEnc(int adcCount) {
+
+    int barCount = (int)((adcCount - ENCODER_MIN) / ADC_COUNTS_PER_COL);
+
+    if (((refreshCount - lastRefresh) > REFRESH_INTERVAL) || requestUpdate) {
+
+        // updateCount(rotationCount);
+        // updateBar((adcCount) / ADC_COUNTS_PER_COL);
+        updateBar(barCount);
+        showText(LINE_1_ENCODER);
         lastRefresh = refreshCount;
     }
     clearUpdateImmediate();

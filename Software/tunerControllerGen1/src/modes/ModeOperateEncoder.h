@@ -10,18 +10,39 @@ class ModeOperateEncoder : public Mode {
   private:
     uint8_t updatePending = false;
 
+    int encoderCountFiltered = 0;
+
     int getCount() {
         return analogRead(ENCODER);
     }
 
+    int updateCount() {
+        // encoderCountFiltered = (encoderCountFiltered + getCount()) / 2;
+        encoderCountFiltered = getCount();
+    }
+
     bool checkLimits() {
         bool isWithinLimits = false;
+
+        updateCount();
+
+        int rawCount = encoderCountFiltered;
+
+        /*
+        if ((rawCount >= limitMin) && (rawCount <= limitMax)) {
+            isWithinLimits = true;
+        } else {
+            isWithinLimits = false;
+        }
+        */
+
         if (userInput->isRotateCW()) {
-            isWithinLimits = ((getCount() > limitMin) ? true : false);
+            isWithinLimits = ((rawCount > limitMin) ? true : false);
 
         } else if (userInput->isRotateCCW()) {
-            isWithinLimits = ((getCount() < limitMax) ? true : false);
+            isWithinLimits = ((rawCount < limitMax) ? true : false);
         }
+
         return isWithinLimits;
     }
 
@@ -30,11 +51,16 @@ class ModeOperateEncoder : public Mode {
         uint8_t moved = false;
 
         userInput->readInputs();
-        display->update(getCount());
+
+        display->updatePositionEnc(
+            getCount()); // Update function to be used with encoder
+        // display->update(getCount()); // Update function based on counts
 
         if (checkLimits()) {
             moved = operateMotor(userInput->getSpeed(), userInput->isRotateCW(),
                                  userInput->isRotateCCW());
+        } else {
+            stepper->disableMotor();
         }
 
         if (moved) {
@@ -42,6 +68,7 @@ class ModeOperateEncoder : public Mode {
 
         } else {
             display->updateImmediate();
+            stepper->disableMotor();
         }
     }
 
@@ -52,6 +79,8 @@ class ModeOperateEncoder : public Mode {
         userInput = ui;
         limitMin = encoderLimitMin;
         limitMax = encoderLimitMax;
+
+        encoderCountFiltered = getCount();
     }
 };
 

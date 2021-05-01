@@ -30,6 +30,9 @@ boolean waitForRelease(){
 #define LINE_1_COUNT     "Position: "
 #define LINE_1_COUNT_LEN 10
 
+#define LINE_1_ENCODER     "11    14 18   28"
+#define LINE_1_ENCODER_LEN 16
+
 #define MODE_CALIBRATION_MESSAGE "Calibration"
 #define MODE_OPERATION_MESSAGE   "Operation"
 #define CALIBRATION_COMPLETED    "Calibration done"
@@ -53,6 +56,7 @@ class UI {
     void clearLCDLine(int line);
 
     void updateCount(int rotationCount);
+    void updatePositionEnc(int adcCount);
 
   private:
     long lastRefresh = 0;

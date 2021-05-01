@@ -1,22 +1,22 @@
 /*
- * Filename:     tunerControlGen1.ino
- * Description:  main file for the tunner control unit.
- * Author: jaesparza - jaesparza@gmail.com
- *
- * Compiled with arduino IDE version 1.8.10, edited with VScode and formatted
- * with with clang-format.
- *
- * Project: Loop atenna control - Gen 1
- * Hardware schematics: See HW folder in Github
- *
- * WARGING: High voltages and lethal currents can develop in an efficient loop
- * antenna. If not properly constructed, lethal voltages could be derived to
- * your control board. Us it at your OWN risk.
- *
- * Pending improvements:
- *  - Write the calibration mode
- *  - Add soft limits
- */
+   Filename:     tunerControlGen1.ino
+   Description:  main file for the tunner control unit.
+   Author: jaesparza - jaesparza@gmail.com
+
+   Compiled with arduino IDE version 1.8.10, edited with VScode and formatted
+   with with clang-format.
+
+   Project: Loop atenna control - Gen 1
+   Hardware schematics: See HW folder in Github
+
+   WARGING: High voltages and lethal currents can develop in an efficient loop
+   antenna. If not properly constructed, lethal voltages could be derived to
+   your control board. Us it at your OWN risk.
+
+   Pending improvements:
+    - Write the calibration mode
+    - Add soft limits
+*/
 
 // Include hardware control classes
 #include "./src/hwControl/EepromAccess.h"
@@ -59,7 +59,11 @@ void setup() {
 
     // Initialize UI
     display->makeEmptyBar();
-    display->showText(LINE_1_COUNT);
+
+    // This is only for the configurations that use software-based count
+    // display->showText(LINE_1_COUNT);
+
+    display->showText(LINE_1_ENCODER);
 
     // Check inputs and enter configuration configuration mode if requested
     userInput->readInputs();

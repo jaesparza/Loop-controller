@@ -1,7 +1,6 @@
 Planning the measurements:
 
-[X] Calibrate between 12 to 30
-[X] Store calibration file, with filename: cal12to30DDate (see format date*). Add relevatn description: SOL calibration 12 to 30MHz using calibration kit provided by the VNA. 101 points. Ch1/Port1 only.
+[ ] For each range to measure, calibrate the device.
 
 Measurements: 
 [X] For each band measurements one file: bandNameDate

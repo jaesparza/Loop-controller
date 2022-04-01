@@ -1,23 +1,21 @@
 ## Planning the measurements
 
 Conducting measurements:
-* [ ] For each range to measure, calibrate the device.
-* [ ] For each band measurements one file: bandNameDate.
-* Guideline: Measure in steps of 1kHz
+* [X] For each range to measure, calibrate the device.
+* [X] For each band measurements one file: bandNameDate.
+* Guideline: Measure in steps of 1kHz (at least)
 * Date in format DayMonthYear in two digit format: e.g. 20m120222 for 20m band measured on the 12 of Feb year 2022
-* For each measurement, log: "Sweep in X segments, YYYY Hz/step"
-
 
 Perform measurments for the following bands:
 
 ### 20m | 14MHz
-* 14.000 - Measure at the lowest usable frequency of the band
+* 14.000 - Measurement center, span 700 kHz, 500 points
 * 14.175
 * 14.350
 
 bandwidth 350 kHz
 
-[ ] Measurements in file 20m260322
+[X] Measurements in file 20m310322
 
 ### 17m | 18 MHz
 * 18.068
@@ -26,9 +24,8 @@ bandwidth 350 kHz
 
 bandwidth 100 kHz
 
-[ ] Measurements in file 17m260322
+[X] Measurements in file 17m260322
 
-Sweep in  segments,  Hz/step
 
 ### 15m | 21 MHz
 * 21.000
@@ -37,7 +34,6 @@ Sweep in  segments,  Hz/step
 
 bandwidth 450 kHz
 
-[ ] Measurements in file 15m260322
 
 Sweep in  segments,  Hz/step
 
@@ -48,9 +44,8 @@ Sweep in  segments,  Hz/step
 
 bandwidth 100 kHz
 
-[ ] Measurements in file 12m260322
+[X] Measurements in file 12m310322
 
-Sweep in  segments,  Hz/step
 
 ### 10m | 28 MHz
 * 28.000
@@ -58,6 +53,4 @@ Sweep in  segments,  Hz/step
 
 bandwidth 1700 kHz
 
-[ ] Measurements in file 10m260322
-
-Sweep in  segments,  Hz/step
+[X] Measurements in file 10m260322

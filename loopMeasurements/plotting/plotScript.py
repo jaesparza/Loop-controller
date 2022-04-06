@@ -6,8 +6,13 @@ import numpy as npy
 
 ## rf.stylely()
 
+measurementLocation = 'locationLivingRoom'
+date = '310322'
+extension = '.s1p'
+band = "20m"
+
 # create a Network type from a touchstone file of a horn antenna
-magLoop = rf.Network('maxCapacitance.s1p')
+magLoop = rf.Network("../"+measurementLocation+"/" + band+date+extension)
 magLoop.frequency.unit= 'mhz'
 
 ## Look up minimum SWR and Frequency
@@ -21,7 +26,7 @@ plt.plot(magLoop.f,
 ##magLoop.plot_s_vswr(m=0,n=0, label='40m band') ## Plot SWR
 
 
-plt.title('VSWR 40m band')
+plt.title('VSWR 20m band')
 plt.ylabel('VSWR')
 plt.xlabel('Frequency (MHz)')
 plt.scatter(f_match,min_SWR,marker='^') 
@@ -36,6 +41,6 @@ plt.text(0.5, 0.5, min_reading, horizontalalignment='center', verticalalignment=
 
 rf.plotting.scale_frequency_ticks(ax,'Mhz')
 ## ax.legend(['SWR 40m band'])
-ax.set_xlim([10180000,10280000]) ## Beautify this so it gets fist and last element from the data array
+#ax.set_xlim([10180000,10280000]) ## Beautify this so it gets fist and last element from the data array
 ax.set_ylim([1,10])
 plt.show()
